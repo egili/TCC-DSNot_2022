@@ -7,7 +7,6 @@ public with sharing virtual class TriggerHandler {
     @TestVisible
     private TriggerContext context;
     
-    // o contexto atual da trigger, sobreponível nos testes
     @TestVisible
     private Boolean isTriggerExecuting;
     
@@ -162,7 +161,7 @@ public with sharing virtual class TriggerHandler {
     protected virtual void afterUndelete(){}
     
     // inner class para gerenciar o contador do loop por handler
-    
+
     @TestVisible
     private class LoopCount {
         private Integer max;
