@@ -19,7 +19,6 @@ public with sharing virtual class TriggerHandler {
         this.setTriggerContext();
     }
     
-    
     // método principal que será chamado na execução da handler
     public void run() {
         
@@ -47,10 +46,11 @@ public with sharing virtual class TriggerHandler {
     
     public void setMaxLoopCount(Integer max) {
         String handlerName = getHandlerName();
+        
         if(!TriggerHandler.loopCountMap.containsKey(handlerName)) 
             TriggerHandler.loopCountMap.put(handlerName, new LoopCount(max));
 
-         TriggerHandler.loopCountMap.get(handlerName).setMax(max);
+        TriggerHandler.loopCountMap.get(handlerName).setMax(max);
     }
     
     public void clearMaxLoopCount() {
