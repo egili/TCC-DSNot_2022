@@ -3,7 +3,7 @@ public with sharing virtual class TriggerHandler {
     private static Map<String, LoopCount> loopCountMap;
     private static Set<String> bypassedHandlers;
     
-    // o contexto atual da trigger, sobreponível nos testes
+    // o contexto atual da trigger
     @TestVisible
     private TriggerContext context;
     
@@ -18,6 +18,7 @@ public with sharing virtual class TriggerHandler {
     public TriggerHandler() {
         this.setTriggerContext();
     }
+    
     
     // método principal que será chamado na execução da handler
     public void run() {
@@ -46,11 +47,10 @@ public with sharing virtual class TriggerHandler {
     
     public void setMaxLoopCount(Integer max) {
         String handlerName = getHandlerName();
-        
         if(!TriggerHandler.loopCountMap.containsKey(handlerName)) 
             TriggerHandler.loopCountMap.put(handlerName, new LoopCount(max));
 
-        TriggerHandler.loopCountMap.get(handlerName).setMax(max);
+         TriggerHandler.loopCountMap.get(handlerName).setMax(max);
     }
     
     public void clearMaxLoopCount() {
@@ -161,7 +161,6 @@ public with sharing virtual class TriggerHandler {
     protected virtual void afterUndelete(){}
     
     // inner class para gerenciar o contador do loop por handler
-
     @TestVisible
     private class LoopCount {
         private Integer max;
