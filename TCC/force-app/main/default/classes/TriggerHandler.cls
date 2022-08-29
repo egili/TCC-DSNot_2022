@@ -1,40 +1,34 @@
 public with sharing virtual class TriggerHandler {
 
-    // static map of handlername, times run() was invoked
     private static Map<String, LoopCount> loopCountMap;
     private static Set<String> bypassedHandlers;
     
-    // the current context of the trigger, overridable in tests
+    // o contexto atual da trigger, sobreponível nos testes
     @TestVisible
     private TriggerContext context;
     
-    // the current context of the trigger, overridable in tests
+    // o contexto atual da trigger, sobreponível nos testes
     @TestVisible
     private Boolean isTriggerExecuting;
     
-    // static initialization
     static {
         loopCountMap = new Map<String, LoopCount>();
         bypassedHandlers = new Set<String>();
     }
     
-    // constructor
     public TriggerHandler() {
         this.setTriggerContext();
     }
     
-    // ***************************************
-    // ******* public instance methods *******
-    // ***************************************
     
-    // main method that will be called during execution
+    // método principal que será chamado na execução da handler
     public void run() {
         
-        if(!validateRun()) return;
+        if(!validateRun()) 
+            return;
         
         addToLoopCount();
         
-        // dispatch to the correct handler method
         if(this.context == TriggerContext.BEFORE_INSERT) {
             this.beforeInsert();
         } else if(this.context == TriggerContext.BEFORE_UPDATE) {
@@ -50,25 +44,21 @@ public with sharing virtual class TriggerHandler {
         } else if(this.context == TriggerContext.AFTER_UNDELETE) {
             this.afterUndelete();
         }
-        
     }
     
     public void setMaxLoopCount(Integer max) {
         String handlerName = getHandlerName();
-        if(!TriggerHandler.loopCountMap.containsKey(handlerName)) {
+        if(!TriggerHandler.loopCountMap.containsKey(handlerName)) 
             TriggerHandler.loopCountMap.put(handlerName, new LoopCount(max));
-        } else {
-            TriggerHandler.loopCountMap.get(handlerName).setMax(max);
-        }
+
+         TriggerHandler.loopCountMap.get(handlerName).setMax(max);
     }
     
     public void clearMaxLoopCount() {
         this.setMaxLoopCount(-1);
     }
     
-    // ***************************************
-    // ******** public static methods ********
-    // ***************************************
+    // ******** métodos de instância PUBLIC ********
     
     public static void bypass(String handlerName) {
         TriggerHandler.bypassedHandlers.add(handlerName);
@@ -86,9 +76,7 @@ public with sharing virtual class TriggerHandler {
         TriggerHandler.bypassedHandlers.clear();
     }
     
-    // ***************************************
-    // ******* private instancemethods *******
-    // ***************************************
+    // ******* métodos de instância PRIVATE *******
     
     @TestVisible
     private void setTriggerContext() {
@@ -127,7 +115,7 @@ public with sharing virtual class TriggerHandler {
         }
     }
     
-    // increment the loop count
+    // incrementar o contador do loop
     @TestVisible
     private void addToLoopCount() {
         String handlerName = getHandlerName();
@@ -140,15 +128,15 @@ public with sharing virtual class TriggerHandler {
         }
     }
     
-    // make sure this trigger should continue to run
+    // garantir que a trigger continue a rodar
     @TestVisible
     private Boolean validateRun() {
-        if(!this.isTriggerExecuting || this.context == null) {
+        if(!this.isTriggerExecuting || this.context == null) 
             throw new TriggerHandlerException('Trigger handler called outside of Trigger execution');
-        }
-        if(TriggerHandler.bypassedHandlers.contains(getHandlerName())) {
+        
+        if(TriggerHandler.bypassedHandlers.contains(getHandlerName())) 
             return false;
-        }
+        
         return true;
     }
     
@@ -156,12 +144,8 @@ public with sharing virtual class TriggerHandler {
     private String getHandlerName() {
         return String.valueOf(this).substring(0,String.valueOf(this).indexOf(':'));
     }
-    
-    // ***************************************
-    // *********** context methods ***********
-    // ***************************************
-    
-    // context-specific methods for override
+        
+    // métodos especificos de contexto para sobrescrita
     @TestVisible
     protected virtual void beforeInsert(){}
     @TestVisible
@@ -177,11 +161,8 @@ public with sharing virtual class TriggerHandler {
     @TestVisible
     protected virtual void afterUndelete(){}
     
-    // ***************************************
-    // ************ inner classes ************
-    // ***************************************
+    // inner class para gerenciar o contador do loop por handler
     
-    // inner class for managing the loop count per handler
     @TestVisible
     private class LoopCount {
         private Integer max;
@@ -199,7 +180,6 @@ public with sharing virtual class TriggerHandler {
         
         public Boolean increment() {
             this.count++;
-            
             return this.exceeded();
         }
         
@@ -222,14 +202,14 @@ public with sharing virtual class TriggerHandler {
     
     @TestVisible
     private enum TriggerContext {
-        	BEFORE_INSERT,
-            BEFORE_UPDATE,
-            BEFORE_DELETE,
-            AFTER_INSERT,
-            AFTER_UPDATE,
-            AFTER_DELETE,
-            AFTER_UNDELETE
-           }
+        BEFORE_INSERT,
+        BEFORE_UPDATE,
+        BEFORE_DELETE,
+        AFTER_INSERT,
+        AFTER_UPDATE,
+        AFTER_DELETE,
+        AFTER_UNDELETE
+    }
     
     public class TriggerHandlerException extends Exception {}
 }

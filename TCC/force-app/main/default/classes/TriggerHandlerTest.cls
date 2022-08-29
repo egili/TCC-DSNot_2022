@@ -9,15 +9,13 @@ private class TriggerHandlerTest {
     
     static {
         handler = new TriggerHandlerTest.TestHandler();
-        // override its internal trigger detection
+        // sobrescreve a detecção interna da trigger
         handler.isTriggerExecuting = true;
     }
     
-    // ***************************************
-    // ************** unit test **************
-    // ***************************************
-    
-    // contexts tests
+    // ************** testes unitários **************
+
+    // testes de contexto
     
     @isTest
     static void testBeforeInsert() {
@@ -86,28 +84,28 @@ private class TriggerHandlerTest {
     static void testBypassAPI() {
         afterUpdateMode();
         
-        // test a bypass and run handler
+        // testa um bypass e roda a handler
         TriggerHandler.bypass('TestHandler');
         handler.run();
         System.assertEquals(null, lastMethodCalled, 'last method should be null when bypassed');
         System.assertEquals(true, TriggerHandler.isBypassed('TestHandler'), 'test handler should be bypassed');
         resetTest();
         
-        // clear that bypass and run handler
+        // limpa o bypass e roda a handler
         TriggerHandler.clearBypass('TestHandler');
         handler.run();
         System.assertEquals('afterUpdate', lastMethodCalled, 'last method called should be afterUpdate');
         System.assertEquals(false, TriggerHandler.isBypassed('TestHandler'), 'test handler should be bypassed');
         resetTest();
         
-        // test a re-bypass and run handler
+        // testa um re-bypass e roda a handler
         TriggerHandler.bypass('TestHandler');
         handler.run();
         System.assertEquals(null, lastMethodCalled, 'last method should be null when bypassed');
         System.assertEquals(true, TriggerHandler.isBypassed('TestHandler'), 'test handler should be bypassed');
         resetTest();
         
-        // clear all bypasses and run handler
+        // limpa todos os bypasses e roda a handler
         TriggerHandler.clearAllBypasses();
         handler.run();
         System.assertEquals('afterUpdate', lastMethodCalled, 'last method called should be afterUpdate');
@@ -115,41 +113,36 @@ private class TriggerHandlerTest {
         resetTest();
     }
     
-    // instance method tests
+    // testes dos métodos de instância
     
     @isTest
     static void testLoopCount() {
         beforeInsertMode();
         
-        // set the max loops to 2
         handler.setMaxLoopCount(2);
         
-        // run the handler twice
         handler.run();
         handler.run();
         
-        // clear the tests
         resetTest();
         
         try {
-            // try running it. This should exceed the limit.
+            // tenta roda. isto deve exceder o limite
             handler.run();
             System.assert(false, 'the handler should throw on the 3rd run when maxloopcount is 3');
         } catch(TriggerHandler.TriggerHandlerException te) {
-            // we're expecting to get here
+            // espera-se gerar essa exceção
             System.assertEquals(null, lastMethodCalled, 'last method should be null');
         } catch(Exception e) {  
             System.assert(false, 'the exception thrown was not expected: ' + e.getTypeName() + ': ' + e.getMessage());
         }
         
-        // clear the tests
         resetTest();
         
-        // now clear the loop count
         handler.clearMaxLoopCount();
         
         try {
-            // re-run the handler. We shouldn't throw now.
+            // roda a handler novamente. Não deve lançar nova exceção
             handler.run();
             System.assertEquals('beforeInsert', lastMethodCalled, 'last method should be beforeInsert');
         } catch(TriggerHandler.TriggerHandlerException te) {
@@ -181,14 +174,12 @@ private class TriggerHandlerTest {
         System.assertEquals(true, lc.exceeded(), 'should not be exceeded with count of 6');
     }
     
-    // private method tests
+    // testes de métodos privados
     
     @isTest 
     static void testGetHandlerName() {
         System.assertEquals('TestHandler', handler.getHandlerName(), 'handler name should match class name');
     }
-    
-    // test virtual methods
     
     @isTest
     static void testVirtualMethods() {
@@ -202,15 +193,13 @@ private class TriggerHandlerTest {
         h.afterUndelete();
     }
     
-    // ***************************************
-    // ********** testing utilities **********
-    // ***************************************
+    // ********** método útil para testes **********
     
     private static void resetTest() {
         lastMethodCalled = null;
     }
     
-    // modes for testing
+    // modos de teste
     
     private static void beforeInsertMode() {
         handler.setTriggerContext('before insert', true);
@@ -240,7 +229,7 @@ private class TriggerHandlerTest {
         handler.setTriggerContext('after undelete', true);
     }
     
-    // test implementation of the TriggerHandler
+    // teste de implementação para TriggerHandler
     
     private class TestHandler extends TriggerHandler {
         
