@@ -14,7 +14,7 @@ private class TriggerHandlerTest {
     }
     
     // ************** testes unitários **************
-
+    
     // testes de contexto
     
     @isTest
@@ -127,7 +127,7 @@ private class TriggerHandlerTest {
         resetTest();
         
         try {
-            // tenta roda. isto deve exceder o limite
+            // tenta rodar. Isto deve exceder o limite
             handler.run();
             System.assert(false, 'the handler should throw on the 3rd run when maxloopcount is 3');
         } catch(TriggerHandler.TriggerHandlerException te) {

@@ -1,0 +1,16 @@
+<template>
+    
+    <lightning-card>
+        <lightning-button variant="success" label="Adicionar" icon-name="utility:add" class="slds-m-left_x-small"></lightning-button>
+        <p class="slds-p-horizontal_small">Gerenciamento de Projetos</p>
+    </lightning-card>
+
+    <section class="table-style slds-table_col-bordered">
+        <lightning-datatable
+        key-field="id"
+        data={data}
+        columns={columns}>
+        </lightning-datatable>
+    </section>
+
+</template>

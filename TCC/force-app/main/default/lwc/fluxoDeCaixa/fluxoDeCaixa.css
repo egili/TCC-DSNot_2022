@@ -1,0 +1,31 @@
+.card-border-style {
+    border: 2px solid #FFFFFF;
+    border-radius: 5px 5px 25px 25px;
+}
+
+.middle-card-style {
+    --sds-c-card-color-background: #D9D9D9;
+    margin-top: -25px;
+    height: 100px;
+    margin-bottom: -50px;
+}
+
+.bottom-card-style{
+    border: 2px solid #FFFFFF;
+    border-radius: 25px;
+}
+
+.combobox-style {
+    border-radius: 20px;
+    color:#66C557;
+    width: 150px;
+    --sds-c-input-radius-border: 20px;
+    --sds-c-card-color-background: #FFFFFF;
+}
+
+.text-style {
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    padding: 25px;
+}
