@@ -1,7 +1,21 @@
-p{
-    color: #66C557;
-    font-weight: bold;
+.table-header-style {
+    background-color: #66C557;
+    color: #FFFFFF;
     font-family: Roboto, sans-serif;
-    font-size: 35px;
-    line-height: auto;
+    letter-spacing: 1px;
+}
+
+.text-style {
+    margin: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1em;
+    border-bottom: 2px solid white; 
 }

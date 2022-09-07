@@ -5,9 +5,10 @@
             <header class="slds-media slds-media_center slds-has-flexi-truncate">
 
                 <div class="slds-media__body">
-                    <h2 class="slds-card__header-title">
+                    <h2 class="slds-card__header-title" style="display: flex; justify-content: center;">
                         <section class="slds-p-around_medium lgc-bg end-style">
                             <lightning-combobox options={options} value={value} placeholder="Selecione" class="combobox-style"></lightning-combobox>
+                            <lightning-formatted-number class="currency-style" value="200000.00" maximum-fraction-digits="2" format-style="currency" currency-code="BRL"></lightning-formatted-number>
                         </section>
                     </h2>
                 </div>
@@ -17,27 +18,32 @@
 
         <div class="slds-card__body slds-card__body_inner" style="display: flex; flex-direction: row; justify-content: space-evenly;">
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
-                <g transform="translate(16 0) scale(-1 1)">
-                    <path fill="#66c557" d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                </g>
-            </svg>
+            <section style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
+                    <g transform="translate(16 0) scale(-1 1)">
+                        <path fill="#66c557" d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                    </g>
+                </svg>
+            
+                <div style="padding: 15px;">
+                    <h3>Receitas</h3>
+                    <h2>R$ 203.000,00</h2>
+                </div>
+            </section>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
-                <g transform="rotate(180 8 8)">
-                    <path fill="#e21f1f" d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                </g>
-            </svg>
-        
+            <section style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
+                    <g transform="rotate(180 8 8)">
+                        <path fill="#e21f1f" d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                    </g>
+                </svg>
+
+                <div style="padding: 15px;">
+                    <h3>Despesas</h3>
+                    <h2>R$ 3.000,00</h2>
+                </div>
+            </section>
         </div>
     </article>
-
-    <article class="slds-card middle-card-style" style="z-index: -1;">
-        <h1 class="text-style">Fontes de receitas por categoria:</h1>
-    </article>
-    
-    <article class="slds-card bottom-card-style" style="z-index: -0;">
-        <h1>sjhdjshdjs</h1>
-    </article>
-
 </template>

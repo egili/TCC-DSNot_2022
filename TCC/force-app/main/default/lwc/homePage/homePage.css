@@ -1,0 +1,12 @@
+.status-style {
+    box-sizing: border-box;
+    position: absolute;
+    width: 276.02px;
+    height: 78.12px;
+    left: 163px;
+    top: 151px;
+    background: #66C557;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}

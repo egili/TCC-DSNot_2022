@@ -1,3 +1,15 @@
 <template>
-    
+    <lightning-card>
+        <lightning-button variant="success" label="Novo" icon-name="utility:add" class="slds-m-left_x-small button-style"></lightning-button>
+        
+        <section class="table-style slds-table_col-bordered">
+            <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </section>
+
+    </lightning-card>
 </template>

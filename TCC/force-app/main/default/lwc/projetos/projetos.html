@@ -1,16 +1,113 @@
 <template>
     
-    <lightning-card>
-        <lightning-button variant="success" label="Adicionar" icon-name="utility:add" class="slds-m-left_x-small"></lightning-button>
-        <p class="slds-p-horizontal_small">Gerenciamento de Projetos</p>
-    </lightning-card>
+    <!--lightning-card>
+        <section style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+            <p class="slds-p-horizontal_small">Gerenciamento de Projetos</p>
+            <lightning-button variant="success" label="Adicionar" icon-name="utility:add" class="button-syle" onclick={addProjeto}></lightning-button>
+        </section>
+    </lightning-card-->
 
-    <section class="table-style slds-table_col-bordered">
-        <lightning-datatable
-        key-field="id"
-        data={data}
-        columns={columns}>
-        </lightning-datatable>
-    </section>
+    <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+        
+        <thead>
+            <tr class="slds-line-height_reset">
 
+                <th class="slds-text-align_right slds-cell_action-mode table-header-style" scope="col" style="width:3.25rem;">
+                    <div class="slds-th__action slds-th__action_form">
+                        <div class="slds-checkbox">
+                            <input type="checkbox" name="options" id="checkbox-unique-id-9" value="checkbox-unique-id-9" tabindex="0" />
+                            <label class="slds-checkbox__label" for="checkbox-unique-id-9" id="check-select-all-label">
+                                <span class="slds-checkbox_faux"></span>
+                            </label>
+                        </div>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Projeto">PROJETO</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Periodo">PERÍODO</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Acoes">AÇÕES</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Atendidos">ATENDIDOS</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Valor">VALOR</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr aria-selected="false" class="slds-hint-parent">
+                <td class="slds-text-align_right slds-cell_action-mode" role="gridcell">
+                    <div class="slds-checkbox">
+                        <input type="checkbox" name="options" id="checkbox-01" value="checkbox-01" tabindex="0" aria-labelledby="check-button-label-01 column-group-header" />
+                        <label class="slds-checkbox__label" for="checkbox-01" id="check-button-label-01">
+                            <span class="slds-checkbox_faux"></span>
+                            <span class="slds-form-element__label slds-assistive-text">Select item 1</span>
+                        </label>
+                    </div>
+                </td>
+
+                <th class="slds-cell_action-mode" scope="row">
+                    <div class="slds-truncate" title="Acme - 1,200 Widgets">
+                        <a href="#" tabindex="0">Acme - 1,200 Widgets</a>
+                    </div>
+                </th>
+
+                <td class="slds-cell_action-mode" role="gridcell">
+                    <div class="slds-truncate" title="Acme">Acme</div>
+                </td>
+
+                <td class="slds-cell_action-mode" role="gridcell">
+                    <div class="slds-truncate" title="4/10/15">4/10/15</div>
+                </td>
+
+                <td class="slds-cell_action-mode" role="gridcell">
+                    <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
+                </td>
+
+                <td class="slds-cell_action-mode" role="gridcell">
+                    <div class="slds-truncate" title="30%">30%</div>
+                </td>
+                
+            </tr>
+        </tbody>
+
+    </table>
 </template>
