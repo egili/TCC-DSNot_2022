@@ -14,7 +14,6 @@ private class TriggerHandlerTest {
     }
     
     // ************** testes unitários **************
-    
     // testes de contexto
     
     @isTest

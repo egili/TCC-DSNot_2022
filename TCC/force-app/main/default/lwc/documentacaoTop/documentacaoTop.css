@@ -1,4 +1,4 @@
-.text-style {
+p{
     color: #66C557;
     font-weight: bold;
     font-family: Roboto, sans-serif;
@@ -6,6 +6,9 @@
     line-height: auto;
 }
 
-.first-card-style {
-    --sds-c-card-color-background: #D9D9D9;
+.button-syle {
+    border-radius: 10px;
+    padding-right: 15px;
+    --slds-c-button-brand-text-color: #FFFFFF;
+    --slds-c-button-brand-color-background: #66C557;
 }

@@ -1,15 +1,84 @@
 <template>
-    <lightning-card>
-        <lightning-button variant="success" label="Novo" icon-name="utility:add" class="slds-m-left_x-small button-style"></lightning-button>
+    <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
         
-        <section class="table-style slds-table_col-bordered">
-            <lightning-datatable
-                key-field="id"
-                data={data}
-                columns={columns}
-                hide-checkbox-column>
-            </lightning-datatable>
-        </section>
+        <thead>
+            <tr class="slds-line-height_reset">
+            
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Projeto">OSC</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
 
-    </lightning-card>
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Periodo">UNIDADE EXECUTORA</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Acoes">DOCUMENTO</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Atendidos">VALIDADE</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Valor">Operação</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr aria-selected="false" class="slds-hint-parent">
+
+                <th class="slds-cell_action-mode" scope="row">
+                    <div class="slds-truncate" title="Acme - 1,200 Widgets">
+                        <a href="#" tabindex="0">Acme - 1,200 Widgets</a>
+                    </div>
+                </th>
+
+                <td class="slds-cell_action-mode" role="gridcell">
+                    <div class="slds-truncate" title="Acme">Acme</div>
+                </td>
+
+                <td class="slds-cell_action-mode" role="gridcell">
+                    <div class="slds-truncate" title="4/10/15">4/10/15</div>
+                </td>
+
+                <td class="slds-cell_action-mode" role="gridcell">
+                    <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
+                </td>
+
+                <td class="slds-cell_action-mode" role="gridcell">
+                    <div class="slds-truncate" title="30%">30%</div>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
 </template>
