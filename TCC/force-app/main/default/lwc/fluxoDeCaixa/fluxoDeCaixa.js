@@ -1,7 +1,13 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, wire, api } from 'lwc';
 //import arrowUp from '@salesforce/resourceUrl/ArrowUp';
 
 export default class FluxoDeCaixa extends LightningElement {
+
+    /*@wire(getObjectInfo, { objectApiName: "FluxoCaixa__c" })
+    fluxoCaixaMetadata;
+    
+    @wire(getPicklistValues, { recordTypeId: "$fluxoCaixaMetadata.data.defaultRecordTypeId", fieldApiName: "FluxoCaixa__c.Meses__c" })
+    mesesPicklist;*/
 
     get options() {
         return [

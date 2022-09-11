@@ -1,16 +1,16 @@
 public with sharing class ProjetoTriggerHandler extends TriggerHandler {
     
-    public override void beforeInsert(){}
+    private List<Projeto__c> triggerNew;
     
-    public override void beforeUpdate(){}
+    private Map<Id, Projeto__c> mapTriggerNew;
 
-    public override void beforeDelete(){}
-    
-    public override void afterInsert(){}
-    
-    public override void afterUpdate(){}
-    
-    public override void afterDelete(){}
-    
-    public override void afterUndelete(){}
+    public ProjetoTriggerHandler(){
+        triggerNew = Trigger.new;
+        
+        mapTriggerNew = (Map<Id, Projeto__c>) Trigger.newMap;
+    }
+        
+    public override void afterInsert(){
+      ProjetoTriggerHandlerHelper.insertRelatedPlanilhaInProjeto(triggerNew);
+    }
 }
