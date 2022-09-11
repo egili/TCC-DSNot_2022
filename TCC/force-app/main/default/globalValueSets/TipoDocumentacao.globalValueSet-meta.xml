@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>CNPJ</fullName>
+        <default>false</default>
+        <label>CNPJ</label>
+    </customValue>
+    <masterLabel>Tipo Documentação</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
