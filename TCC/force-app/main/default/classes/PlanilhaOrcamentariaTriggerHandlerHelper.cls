@@ -1,21 +1,25 @@
 public with sharing class PlanilhaOrcamentariaTriggerHandlerHelper {
 
-    public static void preventAddMoreThanOne(Map<Id, PlanilhaOrcamentaria__c> mapTriggerNew){
+    public static void preventAddMoreThanOne(List<PlanilhaOrcamentaria__c> triggerNew){
         
-        Set<Id> idsPlanilha = mapTriggerNew.keySet();
+        //Set<Id> idsPlanilha = mapTriggerNew.keySet();
         
-        system.debug('idsPlanilha:: ' + idsPlanilha);
+        //system.debug('idsPlanilha:: ' + idsPlanilha);
        
-        List<PlanilhaOrcamentaria__c> planilhas = [SELECT Id, PlanilhaOrcamentariaProjeto__c FROM PlanilhaOrcamentaria__c WHERE Id IN : idsPlanilha AND PlanilhaOrcamentariaProjeto__c != null];
+        //List<PlanilhaOrcamentaria__c> planilhas = [SELECT Id, PlanilhaOrcamentariaProjeto__c FROM PlanilhaOrcamentaria__c WHERE Id IN : idsPlanilha AND PlanilhaOrcamentariaProjeto__c != null];
         
-        system.debug('planilhas:: ' + planilhas);
+        Integer counter = [SELECT COUNT() FROM PlanilhaOrcamentaria__c WHERE PlanilhaOrcamentariaProjeto__c != null];
         
-        for(PlanilhaOrcamentaria__c planilha: mapTriggerNew.values()){
-            //if(idsPlanilha.size() != 1)
+        //system.debug('planilhas:: ' + planilhas);
+        
+        for(PlanilhaOrcamentaria__c planilha: triggerNew){
+            if(counter != 1)
             	planilha.addError('Um Projeto não pode ter mais de uma Planilha Orçamentária');
         }
     }
     
+    
+    // daqui pra baixo ja funciona
     public static void preventDeletion(List<PlanilhaOrcamentaria__c> triggerOld){
         for(PlanilhaOrcamentaria__c planilha: triggerOld){
             planilha.addError('Uma Planilha Orçamentária não pode ser deletada');

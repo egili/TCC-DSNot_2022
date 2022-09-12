@@ -17,15 +17,4 @@ public with sharing class ProjetoTriggerHandlerHelper {
             system.debug(e.getMessage() + ' ' + e.getTypeName());
         }
     }
-    
-    /*public static void preventMoreThanOnePlanilhaAdded(Map<Id, Projeto__c> mapTriggerNew){
-        Set<Id> idsProjeto = mapTriggerNew.keySet();
-       
-        List<PlanilhaOrcamentaria__c> planilhas = [SELECT Id, PlanilhaOrcamentariaProjeto__c FROM PlanilhaOrcamentaria__c WHERE PlanilhaOrcamentariaProjeto__c IN : idsProjeto];
-        
-        for(Projeto__c proj: mapTriggerNew.values()){
-            if(planilhas.size() == 1)
-            	proj.addError('Um Projeto não pode ter mais de uma Planilha Orçamentária');
-        }
-    }*/
 }

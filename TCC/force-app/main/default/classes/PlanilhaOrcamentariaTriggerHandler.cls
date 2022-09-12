@@ -10,9 +10,9 @@ public with sharing class PlanilhaOrcamentariaTriggerHandler extends TriggerHand
         mapTriggerNew = (Map<Id, PlanilhaOrcamentaria__c>) Trigger.newMap;
     }
     
-    /*public override void beforeInsert(){
-        PlanilhaOrcamentariaTriggerHandlerHelper.preventAddMoreThanOne(mapTriggerNew);
-    }*/
+    public override void beforeInsert(){
+        PlanilhaOrcamentariaTriggerHandlerHelper.preventAddMoreThanOne(triggerNew);
+    }
     
     public override void beforeDelete(){ 
         PlanilhaOrcamentariaTriggerHandlerHelper.preventDeletion(triggerOld);
