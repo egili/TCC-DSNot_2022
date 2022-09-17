@@ -9,6 +9,13 @@
         <value>Projetos</value>
     </caseValues>
     <gender>Masculine</gender>
+    <layouts>
+        <layout>Layout de Projeto</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <validationRules>
         <errorMessage></errorMessage>
         <name>DataInicioNaoPodeSerMaiorQueADataFim</name>
