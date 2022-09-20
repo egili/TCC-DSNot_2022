@@ -1,3 +1,3 @@
-global with sharing class DocumentacaoUtils {
+public with sharing class DocumentacaoUtils {
 
 }
