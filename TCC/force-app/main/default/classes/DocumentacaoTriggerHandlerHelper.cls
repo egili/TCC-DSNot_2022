@@ -2,56 +2,44 @@ public with sharing class DocumentacaoTriggerHandlerHelper {
 
     public static void setDataVencimentoDocumentacao(List<Documentacao__c> triggerNew){
         
-        //List<Documentacao__c> listUpdate = new List<Documentacao__c>();
-        
         Documentacao__c triggerNewDoc = triggerNew.get(0);
-        Documentacao__c docUpdate = [SELECT Id FROM Documentacao__c WHERE Id =: triggerNewDoc.Id LIMIT 1];
-        
-        for(Documentacao__c doc: triggerNew){
+        Documentacao__c docUpdate = [SELECT Id, DataEmissao__c, DataVencimento__c, Tipo__c FROM Documentacao__c WHERE Id =: triggerNewDoc.Id LIMIT 1];
             
-            Date dataEmissao = doc.DataEmissao__c;
+            Date dataEmissao = docUpdate.DataEmissao__c;
             
-            switch on doc.Tipo__c {
+            switch on docUpdate.Tipo__c {
                 
                 when 'Cartão do CNPJ'{
-                    doc.DataVencimento__c = dataEmissao.addDays(30);
-                    //listUpdate.add(doc);
+                    docUpdate.DataVencimento__c = dataEmissao.addDays(30);
                 }
                 when 'Ata de Eleição'{
-                    doc.DataVencimento__c = dataEmissao.addDays(40);
-                    //listUpdate.add(doc);
+                    docUpdate.DataVencimento__c = dataEmissao.addDays(40);
                 }
                 when 'Estatuto'{
-                    doc.DataVencimento__c = dataEmissao.addDays(180);
-                    //listUpdate.add(doc);
+                    docUpdate.DataVencimento__c = dataEmissao.addDays(180);
                 }
                 when 'Regimento Interno'{
-                    doc.DataVencimento__c = dataEmissao.addDays(180);
-                    //listUpdate.add(doc);
+                    docUpdate.DataVencimento__c = dataEmissao.addDays(180);
                 }
                 when 'CRCE'{
-                    doc.DataVencimento__c = dataEmissao.addDays(180);
-                // listUpdate.add(doc);
+                    docUpdate.DataVencimento__c = dataEmissao.addDays(180);
                 }
                 when 'CRC'{
-                    doc.DataVencimento__c = dataEmissao.addDays(60);
-                    //listUpdate.add(doc);
+                    docUpdate.DataVencimento__c = dataEmissao.addDays(60);
                 }
                 when 'CND Federal'{
-                    doc.DataVencimento__c = dataEmissao.addDays(80);
-                    //listUpdate.add(doc);
+                    docUpdate.DataVencimento__c = dataEmissao.addDays(80);
                 }
                 when 'CND Estadual'{
-                    doc.DataVencimento__c = dataEmissao.addDays(100);
-                    //listUpdate.add(doc);
+                    docUpdate.DataVencimento__c = dataEmissao.addDays(100);
                 }
                 when 'CND Municipal'{
-                    doc.DataVencimento__c = dataEmissao.addDays(180);
-                    //listUpdate.add(doc);
+                    docUpdate.DataVencimento__c = dataEmissao.addDays(180);
+                }
+                when else{
+                    docUpdate.addError('Invalido');
                 }
             }
-        }
-        
-         //update listUpdate;
+        update docUpdate;
     }
 }
