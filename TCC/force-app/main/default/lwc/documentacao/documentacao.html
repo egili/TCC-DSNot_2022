@@ -1,11 +1,12 @@
 <template>
-    <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+
+    <table if:true={documentacaoMetadata} aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
         
         <thead>
             <tr class="slds-line-height_reset">
             
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Projeto">OSC</span>
+                    <span class="slds-truncate text-style" title="Projeto">{nomeOSCLabel}</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -14,7 +15,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Periodo">UNIDADE EXECUTORA</span>
+                    <span class="slds-truncate text-style" title="Periodo">{docProjLabel}</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -23,7 +24,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Acoes">DOCUMENTO</span>
+                    <span class="slds-truncate text-style" title="Acoes">{nameLabel}</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -32,7 +33,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Atendidos">VALIDADE</span>
+                    <span class="slds-truncate text-style" title="Atendidos">{tipoLabel}</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -41,13 +42,22 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Valor">Operação</span>
+                        <span class="slds-truncate text-style" title="Valor">{dataVencLabel}</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
                         </span>
                     </div>
                 </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style" title="Valor">{statusLabel}</span>
+                <div class="slds-resizable">
+                    <span class="slds-resizable__handle">
+                        <span class="slds-resizable__divider"></span>
+                    </span>
+                </div>
+            </th>
 
             </tr>
         </thead>
