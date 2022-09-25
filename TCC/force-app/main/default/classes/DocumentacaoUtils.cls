@@ -19,23 +19,16 @@ public with sharing class DocumentacaoUtils {
             if(anoAtual < anoVencimento){
                 doc.Status__c = 'Atualizado';    
                 listDocUpdate.add(doc);
-            }
-            else if(anoAtual > anoVencimento){
+            }else if(anoAtual > anoVencimento){
                 doc.Status__c = 'Desatualizado';    
                 listDocUpdate.add(doc);
-            }
-            
-            else if(dataAtual < dataVencimento && dataAtual.addDays(7) == dataVencimento){
+            }else if(dataAtual < dataVencimento && dataAtual.addDays(7) == dataVencimento){
                 doc.Status__c = 'Próximo ao Vencimento';    
                 listDocUpdate.add(doc);
-            }
-            
-            else if(dataAtual < dataVencimento){
+            }else if(dataAtual < dataVencimento){
                 doc.Status__c = 'Atualizado';    
                 listDocUpdate.add(doc);
-            }
-            
-            else if(dataAtual >= dataVencimento){
+            }else if(dataAtual >= dataVencimento){
 				doc.Status__c = 'Desatualizado';    
                 listDocUpdate.add(doc);
             }
