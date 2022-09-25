@@ -5,11 +5,6 @@ private class DocumentacaoVOTest {
      static void constructorTest(){
         Test.startTest();
         DocumentacaoVO docVO = new DocumentacaoVO();
-		docVO.idDocumentacao = 'id';
-		docVO.Documento = 'documento';
-        docVO.nomeOsc = 'nome';
-        docVO.UnidadeExecutora = 'unidade';
-        docVO.Validade = Date.today();
         Test.stopTest();
         
         System.assert(docVO != null);
@@ -18,7 +13,7 @@ private class DocumentacaoVOTest {
     @isTest
     static void constructorOverloadTest(){
         Test.startTest();
-        DocumentacaoVO docVO = new DocumentacaoVO('id', 'documento', 'nome', 'unidade', Date.today());
+        DocumentacaoVO docVO = new DocumentacaoVO('id', 'nomeosc', 'docproj', 'documento', 'tipo', Date.today(), 'status');
         Test.stopTest();
         
         System.assert(docVO != null);
