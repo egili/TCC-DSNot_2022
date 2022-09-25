@@ -3,7 +3,6 @@ private class DocumentacaoUtilsTest {
     
     @testSetup
     static void makeData(){
-        
        Date currentDate = System.today();
         
        Documentacao__c docVencida = TestDataFactory.makeDocumentacao();

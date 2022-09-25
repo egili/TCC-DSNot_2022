@@ -5,7 +5,6 @@ private class DocumentacaoSchedulerTest {
 
 	@isTest
     static void executeTest(){
-        
         Date currentDate = System.today();
 
         Documentacao__c doc = TestDataFactory.makeDocumentacao();
@@ -15,7 +14,7 @@ private class DocumentacaoSchedulerTest {
         update doc;
         
         Test.startTest();
-        String jobId = System.schedule('schedule for updating doc status', scheduleDaily, new DocumentacaoScheduler());
+        String jobId = System.schedule('schedule for updating documentation status', scheduleDaily, new DocumentacaoScheduler());
         Test.stopTest();
         
         CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered, NextFireTime FROM CronTrigger WHERE id = :jobId];
