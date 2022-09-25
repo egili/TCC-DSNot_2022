@@ -1,19 +1,66 @@
-import { LightningElement, api, track } from 'lwc';
-
-const columns = [
-    { label: 'OSC', fieldName: 'nomeOSC', hideDefaultActions: true, sortable: true, type: 'text', editable: false, displayReadOnlyIcon: true, cellAttributes: { alignment: 'left' } },
-    { label: 'Unidade Executora', fieldName: 'periodoProjeto', hideDefaultActions: true, sortable: true, type: 'text', editable: false, displayReadOnlyIcon: true, cellAttributes: { alignment: 'left' } },
-    { label: 'Documento', fieldName: 'documento', hideDefaultActions: true, sortable: true, type: 'text', editable: false, displayReadOnlyIcon: true, cellAttributes: { alignment: 'left' } },  
-    { label: 'Validade', fieldName: 'validadeDocumento', hideDefaultActions: true, sortable: true, type: 'date-local',typeAttributes: {day: "2-digit", month: "2-digit"}, editable: false, displayReadOnlyIcon: true, cellAttributes: { alignment: 'left' } },  // entender qual info sera mostrada nessa coluna
-    { label: 'Operação', fieldName: 'operacao', hideDefaultActions: true, sortable: true, type: 'text', editable: true, cellAttributes: { alignment: 'left' } },
-]
-
+import { LightningElement, api, track, wire } from 'lwc';
+import getDocumentacao from '@salesforce/apex/DocumentacaoLWCController.getDocumentacao';
+import { ShowToastEvent }  from 'lightning/platformShowToastEvent';
+import { getObjectInfo } from 'lightning/uiObjectInfoApi'; 
 export default class Documentacao extends LightningElement {
     
     @api recordId;
 
-    @track columns = columns;
     @track data;
+    @track isLoading = true;
 
-    @track isLoading;
+    @wire(getObjectInfo, { objectApiName: "Documentacao__c" })
+    documentacaoMetadata;
+
+    connectedCallback() {
+        getDocumentacao({recordId: this.recordId})
+        .then(result => {
+            this.data = result;
+            this.isLoading = false;
+        })
+        .catch(error => {
+            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+            this.data = undefined;
+        })
+    }
+
+    get nomeOSCLabel() {
+        if(this.documentacaoMetadata)
+            return this.documentacaoMetadata.data.fields.NomeOSC__c.label;
+    }
+
+    get docProjLabel() {
+        if(this.documentacaoMetadata)
+            return this.documentacaoMetadata.data.fields.DocumentacaoProjeto__c.label;
+    }
+
+    get nameLabel() {
+        if(this.documentacaoMetadata)
+            return this.documentacaoMetadata.data.fields.Name.label;
+    }
+
+    get tipoLabel() {
+        if(this.documentacaoMetadata)
+            return this.documentacaoMetadata.data.fields.Tipo__c.label;
+    }
+
+    get dataVencLabel() {
+        if(this.documentacaoMetadata)
+            return this.documentacaoMetadata.data.fields.DataVencimento__c.label;
+    }
+
+    get statusLabel() {
+        if(this.documentacaoMetadata)
+            return this.documentacaoMetadata.data.fields.Status__c.label;
+    }
+
+    showToast(title, message, variant, mode) {
+        const errorToast = new ShowToastEvent({
+            title: title,
+            message: message,
+            variant: variant,
+            mode: mode
+        });
+        this.dispatchEvent(errorToast);
+    }
 }

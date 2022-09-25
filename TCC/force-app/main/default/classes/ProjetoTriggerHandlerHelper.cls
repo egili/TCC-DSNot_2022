@@ -1,4 +1,4 @@
-public with sharing class ProjetoTriggerHandlerHelper {
+public without sharing class ProjetoTriggerHandlerHelper {
 
     public static void insertRelatedPlanilhaInProjeto(List<Projeto__c> triggerNew){
         PlanilhaOrcamentaria__c planilhaProjeto = new PlanilhaOrcamentaria__c();
