@@ -1,0 +1,20 @@
+.container {
+    position: absolute;
+    z-index: 99999;
+  }
+  
+  .pillSize {
+    width: 100%;
+  }
+  
+  lightning-radio-group .slds-radio_faux {
+    margin-right: 10px;
+  }
+  
+  div.slds-p-top_none.input-mobile > lightning-input {
+    margin: 10px 10px 10px 10px;
+  }
+  
+  .st-box {
+    position: relative;
+  }
