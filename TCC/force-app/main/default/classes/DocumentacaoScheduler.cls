@@ -9,7 +9,7 @@ global with sharing class DocumentacaoScheduler implements Schedulable {
             DocumentacaoUtils.updateStatus(listDoc);
     }
     
-    global static String scheduleEveryDay(){
+    /*global static String scheduleEveryDay(){
         return System.schedule('schedule for updating doc status', scheduleDaily, new DocumentacaoScheduler());
-    }
+    }*/
 }

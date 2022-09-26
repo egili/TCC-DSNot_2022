@@ -18,5 +18,7 @@ private class DocumentacaoSchedulerTest {
         Test.stopTest();
         
         CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered, NextFireTime FROM CronTrigger WHERE id = :jobId];
+        
+        System.debug('contrigger ' + ct);
     }
 }

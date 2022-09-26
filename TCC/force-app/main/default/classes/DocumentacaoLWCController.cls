@@ -11,4 +11,14 @@ public with sharing class DocumentacaoLWCController {
         }
         return docsToDisplay;
 	}
+    
+    @AuraEnabled
+    public static void insertDocumentacaoInAction(String descricao, Date dataEmissao, Date dataVencimento, String tipo, String descricaoOutroTipo, String projetoRelacionado){
+        insert new Documentacao__c(Name = descricao, DataEmissao__c = dataEmissao, DataVencimento__c = dataVencimento, Tipo__c = tipo, OutroTipoDocumentacao__c = descricaoOutroTipo, DocumentacaoProjeto__c = projetoRelacionado);
+    }
+    
+    @AuraEnabled
+    public static String getUserName(){
+		return UserInfo.getName();
+    }
 }
