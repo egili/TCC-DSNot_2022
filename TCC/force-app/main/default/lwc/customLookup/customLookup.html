@@ -4,20 +4,8 @@
         <div class="slds-form-element">
           <div class="slds-form-element__control">
             <div class="slds-combobox_container">
-              <div
-                id="box"
-                class={boxClass}
-                aria-expanded="true"
-                aria-haspopup="listbox"
-                role="combobox"
-              >
-                <div
-                  class="
-                    slds-combobox__form-element
-                    slds-input-has-icon slds-input-has-icon_right
-                  "
-                  role="none"
-                >
+              <div id="box" class={boxClass} aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
                   <div class="slds-p-top_none">
                     <lightning-input
                       disabled={disabled}
@@ -33,48 +21,26 @@
                       label={label}
                       autocomplete="off"
                       placeholder={searchPlaceholder}
-                      onkeypress={validateChange}
-                    >
+                      onkeypress={validateChange}>
                     </lightning-input>
                   </div>
                 </div>
-                <div
-                  id="listbox-id-1"
-                  class="
-                    slds-dropdown
-                    slds-dropdown_length-with-icon-7
-                    slds-dropdown_fluid
-                    st-box
-                  "
-                  role="listbox"
-                >
-                  <ul
-                    class="slds-listbox slds-listbox_vertical"
-                    role="presentation"
-                  >
+                <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid st-box" role="listbox">
+                  <ul class="slds-listbox slds-listbox_vertical" role="presentation">
                     <template for:each={records} for:item="record">
                       <div
                         key={record.value}
                         onclick={onSelect}
                         data-id={record.value}
                         role="presentation"
-                        data-name={record.label}
-                      >
-                        <span
-                          class="
-                            slds-lookup__item-action
-                            slds-lookup__item-action--label
-                          "
-                          role="option"
-                        >
+                        data-name={record.label}>
+                        <span class="slds-lookup__item-action slds-lookup__item-action--label" role="option">
                           <lightning-icon
                             icon-name="standard:user"
                             alternative-text="Officer"
-                            title="Officer"
-                          ></lightning-icon>
-                          <span class="slds-truncate label-text slds-p-left_small"
-                            >{record.label}</span
-                          >
+                            title="Officer">
+                          </lightning-icon>
+                          <span class="slds-truncate label-text slds-p-left_small">{record.label}</span>
                         </span>
                       </div>
                     </template>

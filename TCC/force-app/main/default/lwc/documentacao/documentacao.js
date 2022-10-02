@@ -23,7 +23,7 @@ export default class Documentacao extends LightningElement {
             this.data = undefined;
         })
     }
-
+/*
     get nomeOSCLabel() {
         return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.NomeOSC__c.label : '' ;
     }
@@ -42,7 +42,7 @@ export default class Documentacao extends LightningElement {
     get statusLabel() {
         return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.Status__c.label : '' ;
     }
-
+*/
     showToast(title, message, variant, mode) {
         const errorToast = new ShowToastEvent({
             title: title,

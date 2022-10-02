@@ -1,7 +1,8 @@
-import lookUp from "@salesforce/apex/CustomLookupController.search";
 import { api, LightningElement, track } from "lwc";
+import lookUp from "@salesforce/apex/CustomLookupController.search";
 
 export default class customLookUp extends LightningElement {
+
   @api objName;
   @api fieldApi;
   @api iconName;
@@ -11,23 +12,21 @@ export default class customLookUp extends LightningElement {
   @api searchPlaceholder = "Buscar";
   @api fieldType;
   @api order;
+  @api initial;
+  @api selectedName;
+
   searchTerm = "";
   loading = false;
 
-  @api selectedName;
   @track records;
   @track isValueSelected;
   @track blurTimeout;
-  //css
-  @track boxClass =
-    "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
   @track inputClass = "label-text";
+  @track boxClass = "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
 
   get variant() {
     return this.label == null ? "label-hidden" : "";
   }
-
-  @api initial;
 
   connectedCallback() {
     this.searchTerm = this.initial;
@@ -35,11 +34,7 @@ export default class customLookUp extends LightningElement {
 
     if (this.disabled) {
       const forcedStyles = document.createElement("style");
-      forcedStyles.innerText = `
-        c-custom-lookup button[data-element-id="searchClear"] {
-          display: none;
-        }
-      `;
+      forcedStyles.innerText = `c-custom-lookup button[data-element-id="searchClear"] {display: none;}`;
       document.body.appendChild(forcedStyles);
     }
   }
@@ -52,9 +47,7 @@ export default class customLookUp extends LightningElement {
       this.boxClass =
         "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
 
-      const valueSelectedEvent = new CustomEvent("lookupselected", {
-        detail: { name: this.searchTerm },
-      });
+      const valueSelectedEvent = new CustomEvent("lookupselected", {detail: { name: this.searchTerm },});
       this.dispatchEvent(valueSelectedEvent);
     }
   }
@@ -67,82 +60,62 @@ export default class customLookUp extends LightningElement {
     let selectedId = event.currentTarget.dataset.id;
     let selectedName = event.currentTarget.dataset.name;
 
-    const valueSelectedEvent = new CustomEvent("lookupselected", {
-      detail: { name: selectedName, id: selectedId },
-    });
+    const valueSelectedEvent = new CustomEvent("lookupselected", {detail: { name: selectedName, id: selectedId },});
     this.dispatchEvent(valueSelectedEvent);
 
     this.isValueSelected = true;
     this.selectedName = selectedName;
     this.searchTerm = selectedName;
 
-    this.boxClass =
-      "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
+    this.boxClass = "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
   }
 
   handleRemovePill() {
     this.isValueSelected = false;
-    this.boxClass =
-      "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
+    this.boxClass = "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
   }
 
   onChange(event) {
     this.searchTerm = event.target.value;
-    this.boxClass =
-      "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
+    this.boxClass = "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
     this.isValueSelected = false;
 
     this.loading = true;
 
-    lookUp({
-      searchTerm: this.searchTerm,
-      fieldApi: this.fieldApi,
-      myObject: this.objName,
-      filter: this.filter,
-      order: this.order,
-    })
-      .then((data) => {
-        this.error = undefined;
-        this.records = [];
+    lookUp({searchTerm: this.searchTerm, fieldApi: this.fieldApi, myObject: this.objName, filter: this.filter, order: this.order,})
+    .then((data) => {
+      this.error = undefined;
+      this.records = [];
 
-        if (data.length == 0) {
-          this.boxClass =
-            "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
-        } else if (data.length > 1 && this.searchTerm) {
-          this.boxClass =
-            "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus slds-is-open";
-        } else if (
-          this.searchTerm &&
-          this.searchTerm != data[0][this.fieldApi]
-        ) {
-          this.boxClass =
-            "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus slds-is-open";
-        }
+      if (data.length == 0) {
+        this.boxClass = "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
+      } else if (data.length > 1 && this.searchTerm) {
+        this.boxClass = "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus slds-is-open";
+      } else if (this.searchTerm && this.searchTerm != data[0][this.fieldApi]) {
+        this.boxClass = "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus slds-is-open";
+      }
 
-        data.forEach((item) => {
-          this.records.push({ label: item[this.fieldApi], value: item.Id });
-        });
-      })
-      .catch((error) => {
-        this.error = error;
-        this.records = undefined;
-        console.log(error);
-      })
-      .finally(() => {
-        this.loading = false;
+      data.forEach((item) => {
+        this.records.push({ label: item[this.fieldApi], value: item.Id });
       });
+    })
+    .catch((error) => {
+      this.error = error;
+      this.records = undefined;
+      console.log('error no lookup ' ,error);
+    })
+    .finally(() => {
+      this.loading = false;
+    });
   }
 
   onCommit(event) {
     if (!event.target.value) {
       this.searchTerm = event.target.value;
-      this.boxClass =
-        "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
+      this.boxClass = "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
       this.isValueSelected = false;
 
-      const valueSelectedEvent = new CustomEvent("lookupselected", {
-        detail: { name: this.searchTerm },
-      });
+      const valueSelectedEvent = new CustomEvent("lookupselected", {detail: { name: this.searchTerm },});
       this.dispatchEvent(valueSelectedEvent);
     }
   }

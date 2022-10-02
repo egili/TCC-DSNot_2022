@@ -63,32 +63,37 @@
         </thead>
 
         <tbody>
+            <template for:each={data} for:item="doc">
+                <tr aria-selected="false" class="slds-hint-parent" key={idDocumentacao}>
 
-            <tr aria-selected="false" class="slds-hint-parent">
+                    <th class="slds-cell_action-mode" scope="row">
+                        <div class="slds-truncate">
+                            <a href="#" tabindex="0">{item.nomeOSC}</a>
+                        </div>
+                    </th>
 
-                <th class="slds-cell_action-mode" scope="row">
-                    <div class="slds-truncate" title="Acme - 1,200 Widgets">
-                        <a href="#" tabindex="0">Acme - 1,200 Widgets</a>
-                    </div>
-                </th>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate">{item.documentacaoProj}</div>
+                    </td>
 
-                <td class="slds-cell_action-mode" role="gridcell">
-                    <div class="slds-truncate" title="Acme">Acme</div>
-                </td>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate"></div>
+                    </td>
 
-                <td class="slds-cell_action-mode" role="gridcell">
-                    <div class="slds-truncate" title="4/10/15">4/10/15</div>
-                </td>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate"> </div>
+                    </td>
 
-                <td class="slds-cell_action-mode" role="gridcell">
-                    <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
-                </td>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate"></div>
+                    </td>
 
-                <td class="slds-cell_action-mode" role="gridcell">
-                    <div class="slds-truncate" title="30%">30%</div>
-                </td>
-                
-            </tr>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate"></div>
+                    </td>
+                    
+                </tr>
+            </template>
         </tbody>
     </table>
 </template>

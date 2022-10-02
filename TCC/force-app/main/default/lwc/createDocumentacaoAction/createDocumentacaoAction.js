@@ -5,6 +5,9 @@ import { CloseActionScreenEvent } from "lightning/actions";
 import getUserName from '@salesforce/apex/DocumentacaoLWCController.getUserName';
 import insertDocumentacao from '@salesforce/apex/DocumentacaoLWCController.insertDocumentacaoInAction';
 
+import DOC_OBJECT from '@salesforce/schema/Documentacao__c';
+import PROJ_FIELD from '@salesforce/schema/Documentacao__c.DocumentacaoProjeto__c';
+
 export default class CreateDocumentacaoAction extends LightningElement {
 
     username;
@@ -67,11 +70,8 @@ export default class CreateDocumentacaoAction extends LightningElement {
     }
 
     isInProjetoChange(event) {
-        this.isInProjeto = false;
-
         this.isInProjetoValue = event.target.checked;
-
-        this.isInProjeto = true;
+        this.isInProjeto = !this.isInProjeto;
     }
 
     documentacaoProjetoChange(event) {
@@ -80,17 +80,17 @@ export default class CreateDocumentacaoAction extends LightningElement {
 
     handleSave() {
         insertDocumentacao({descricao: this.descricaoValue, dataEmissao: this.dataEmissaoValue, dataVencimento: this.dataEmissaoValue ? this.dataEmissaoValue : null,
-                            tipo: this.tipoValue, descricaoOutroTipo: this.outroTipoDescricaoValue ? this.outroTipoDescricaoValue : null,
-                            projetoRelacionado: this.documentacaoProjetoValue ? this.documentacaoProjetoValue : null})
-            .then(result => {
-                this.showToast('Sucesso', 'Nova documentação inserida com sucesso', 'success', 'dismissible');
-            })
-            .catch(error => {
-                this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
-            })
-            .finally(() => {
-                this.dispatchEvent(new CloseActionScreenEvent());
-            })
+                        tipo: this.tipoValue, descricaoOutroTipo: this.outroTipoDescricaoValue ? this.outroTipoDescricaoValue : null,
+                        projetoRelacionado: this.documentacaoProjetoValue ? this.documentacaoProjetoValue : null})
+        .then(result => {
+            this.showToast('Sucesso', 'Nova documentação inserida com sucesso', 'success', 'dismissible');
+        })
+        .catch(error => {
+            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+        })
+        .finally(() => {
+            this.dispatchEvent(new CloseActionScreenEvent());
+        })
     }
 
     handleClose(event) {
@@ -98,7 +98,7 @@ export default class CreateDocumentacaoAction extends LightningElement {
         this.dispatchEvent(new CloseActionScreenEvent());
     }
 
-    /*get descricaoLabel() {
+    get descricaoLabel() {
         return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.Name.label : '' ;
     }
     get dataEmissaoLabel() {
@@ -121,7 +121,7 @@ export default class CreateDocumentacaoAction extends LightningElement {
     }
     get outroTipoLabel() {
         return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.OutroTipoDocumentacao__c.label : '' ;
-    }*/
+    }
 
     showToast(title, message, variant, mode) {
         const errorToast = new ShowToastEvent({
