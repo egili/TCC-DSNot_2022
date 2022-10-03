@@ -96,21 +96,23 @@
                         </lightning-input>
 
                         <template if:true={isInProjeto}>
-                            <lightning-input 
-                                placeholder="Pesquisar Projeto" 
-                                label={docProjLabel} 
-                                value={documentacaoProjetoValue}
-                                onchange={documentacaoProjetoChange}
-                                type="search" 
-                                style="width: 40%; margin-left: 77px;" 
-                                required>
-                            </lightning-input>
-                        </template>
+                            <c-custom-lookup
+                                obj-name="Documentacao__c" 
+                                field-api="DocumentacaoProjeto__r.Name" 
+                                search-placeholder="Pesquisar Projeto" 
+                                order="ASC" 
+                                label={docProjLabel}
+                                field-type="text"
+                                filter="DocumentacaoProjeto__r.DataTerminoProjeto__c = null"
+                                icon-name="standard:topic"
+                                icon-title="Projetos"
+                                icon-alternative-text="Icone de Projetos relacionados"
+                                style="width: 40%; margin-left: 77px;">
+                            </c-custom-lookup>
 
+                        </template>
                         
                     </section>
-
-                    <c-custom-lookup obj-name={DOC_OBJECT} field-api={PROJ_FIELD}></c-custom-lookup>
                     
                 </section>
 

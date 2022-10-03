@@ -1,4 +1,4 @@
-public without sharing class CustomLookupController {
+public without sharing class CustomController {
 
     @AuraEnabled(cacheable=true)
     public static List<sObject> search(String searchTerm, String fieldApi, String myObject, String filter, String order) {
@@ -23,8 +23,8 @@ public without sharing class CustomLookupController {
 
         System.debug(query);
 
-        List<sObject> lookUpList = database.query(query);
+        List<sObject> List = database.query(query);
 
-        return lookUpList;
+        return List;
     }
 }

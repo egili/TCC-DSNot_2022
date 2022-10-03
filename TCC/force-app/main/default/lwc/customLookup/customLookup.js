@@ -9,11 +9,14 @@ export default class customLookUp extends LightningElement {
   @api disabled;
   @api label;
   @api filter = "";
-  @api searchPlaceholder = "Buscar";
+  @api searchPlaceholder = "";
   @api fieldType;
   @api order;
   @api initial;
   @api selectedName;
+
+  @api iconAlternativeText;
+  @api iconTitle;
 
   searchTerm = "";
   loading = false;
@@ -44,8 +47,7 @@ export default class customLookUp extends LightningElement {
       this.searchTerm = target.value;
       this.isValueSelected = true;
       this.selectedName = this.searchTerm;
-      this.boxClass =
-        "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
+      this.boxClass = "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus";
 
       const valueSelectedEvent = new CustomEvent("lookupselected", {detail: { name: this.searchTerm },});
       this.dispatchEvent(valueSelectedEvent);
@@ -82,7 +84,12 @@ export default class customLookUp extends LightningElement {
 
     this.loading = true;
 
-    lookUp({searchTerm: this.searchTerm, fieldApi: this.fieldApi, myObject: this.objName, filter: this.filter, order: this.order,})
+    lookUp({
+      searchTerm: this.searchTerm, 
+      fieldApi: this.fieldApi, 
+      myObject: this.objName, 
+      filter: this.filter, 
+      order: this.order,})
     .then((data) => {
       this.error = undefined;
       this.records = [];

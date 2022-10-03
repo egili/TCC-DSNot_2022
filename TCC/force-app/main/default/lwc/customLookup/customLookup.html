@@ -36,9 +36,9 @@
                         data-name={record.label}>
                         <span class="slds-lookup__item-action slds-lookup__item-action--label" role="option">
                           <lightning-icon
-                            icon-name="standard:user"
-                            alternative-text="Officer"
-                            title="Officer">
+                            icon-name={iconName}
+                            alternative-text={iconAlternativeText}
+                            title={iconTitle}>
                           </lightning-icon>
                           <span class="slds-truncate label-text slds-p-left_small">{record.label}</span>
                         </span>

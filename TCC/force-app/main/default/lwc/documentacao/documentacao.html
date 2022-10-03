@@ -6,7 +6,7 @@
             <tr class="slds-line-height_reset">
             
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Projeto">{nomeOSCLabel}</span>
+                    <span class="slds-truncate text-style">OSC</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -15,7 +15,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Periodo">{docProjLabel}</span>
+                    <span class="slds-truncate text-style">Documentação do Projeto</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -24,7 +24,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Acoes">{nameLabel}</span>
+                    <span class="slds-truncate text-style">Descrição</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -33,7 +33,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Atendidos">{tipoLabel}</span>
+                    <span class="slds-truncate text-style">Tipo Documentação</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -42,7 +42,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                        <span class="slds-truncate text-style" title="Valor">{dataVencLabel}</span>
+                        <span class="slds-truncate text-style">Data de Vencimento</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -51,7 +51,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Valor">{statusLabel}</span>
+                    <span class="slds-truncate text-style">Status</span>
                 <div class="slds-resizable">
                     <span class="slds-resizable__handle">
                         <span class="slds-resizable__divider"></span>
@@ -64,32 +64,31 @@
 
         <tbody>
             <template for:each={data} for:item="doc">
-                <tr aria-selected="false" class="slds-hint-parent" key={idDocumentacao}>
+                <tr aria-selected="false" class="slds-hint-parent" key={doc.idDocumentacao}>
 
                     <th class="slds-cell_action-mode" scope="row">
-                        <div class="slds-truncate">
-                            <a href="#" tabindex="0">{item.nomeOSC}</a>
-                        </div>
+                        <div class="slds-item_detail slds-truncate">{doc.nomeOSC}</div>
                     </th>
 
                     <td class="slds-cell_action-mode" role="gridcell">
-                        <div class="slds-truncate">{item.documentacaoProj}</div>
+                        <div class="slds-truncate">{doc.documentacaoProj}</div>
                     </td>
 
                     <td class="slds-cell_action-mode" role="gridcell">
-                        <div class="slds-truncate"></div>
+                        <div class="slds-truncate">{doc.nomeDocumento}</div>
                     </td>
 
                     <td class="slds-cell_action-mode" role="gridcell">
-                        <div class="slds-truncate"> </div>
+                        <div class="slds-truncate">{doc.tipo}</div>
                     </td>
 
                     <td class="slds-cell_action-mode" role="gridcell">
-                        <div class="slds-truncate"></div>
+                        <div class="slds-truncate">{doc.vencimento}</div>
                     </td>
 
                     <td class="slds-cell_action-mode" role="gridcell">
-                        <div class="slds-truncate"></div>
+                        <div class="dot" style={semaphoreStyle}></div>
+                    <!-- <div class="slds-truncate">{doc.status}</div> -->
                     </td>
                     
                 </tr>

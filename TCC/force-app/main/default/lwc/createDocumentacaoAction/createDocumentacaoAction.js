@@ -98,7 +98,7 @@ export default class CreateDocumentacaoAction extends LightningElement {
         this.dispatchEvent(new CloseActionScreenEvent());
     }
 
-    get descricaoLabel() {
+    /*get descricaoLabel() {
         return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.Name.label : '' ;
     }
     get dataEmissaoLabel() {
@@ -121,7 +121,7 @@ export default class CreateDocumentacaoAction extends LightningElement {
     }
     get outroTipoLabel() {
         return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.OutroTipoDocumentacao__c.label : '' ;
-    }
+    }*/
 
     showToast(title, message, variant, mode) {
         const errorToast = new ShowToastEvent({

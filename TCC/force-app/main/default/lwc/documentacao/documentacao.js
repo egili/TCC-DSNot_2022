@@ -9,6 +9,9 @@ export default class Documentacao extends LightningElement {
     @track data;
     @track isLoading = true;
 
+    statusDoc;
+    formattedDate;
+
     @wire(getObjectInfo, { objectApiName: "Documentacao__c" })
     documentacaoMetadata;
 
@@ -16,6 +19,14 @@ export default class Documentacao extends LightningElement {
         getDocumentacao({recordId: this.recordId})
         .then(result => {
             this.data = result;
+            console.log("results ", this.data[0].status);
+
+            this.statusDoc = this.data[0].status;
+
+            //this.formattedDate = this.formatDate(this.data[0].vencimento);
+
+            //console.log('formatada ' + this.formattedDate);
+
             this.isLoading = false;
         })
         .catch(error => {
@@ -23,26 +34,16 @@ export default class Documentacao extends LightningElement {
             this.data = undefined;
         })
     }
-/*
-    get nomeOSCLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.NomeOSC__c.label : '' ;
+
+    formatDate(date) {
+        let format = ((date.getDate())) + "/" + ((date.getMonth() + 1)) + "/" + date.getFullYear();
+        return format;
     }
-    get docProjLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.DocumentacaoProjeto__c.label : '' ;
+
+    get semaphoreStyle(){
+        return this.statusDoc == "Atualizado" ? `background-color:#66C557;` : this.statusDoc == "Próximo ao Vencimento" ? `background-color: #ebee38;` : this.statusDoc == "Desatualizado" ? `background-color: #d81717;`: "";
     }
-    get nameLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.Name.label : '' ;
-    }
-    get tipoLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.Tipo__c.label : '' ;
-    }
-    get dataVencLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.DataVencimento__c.label : '' ;
-    }
-    get statusLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.Status__c.label : '' ;
-    }
-*/
+    
     showToast(title, message, variant, mode) {
         const errorToast = new ShowToastEvent({
             title: title,

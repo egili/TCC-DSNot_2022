@@ -7,8 +7,10 @@ public with sharing class DocumentacaoLWCController {
         List<DocumentacaoVO> docsToDisplay = new List<DocumentacaoVO>();
         
         for(Documentacao__c doc: docs){
-            docsToDisplay.add(new DocumentacaoVO(doc.Id, doc.nomeOSC__c, doc.DocumentacaoProjeto__c, doc.Name, doc.Tipo__c, doc.DataVencimento__c, doc.Status__c));
+            docsToDisplay.add(new DocumentacaoVO(doc.Id, doc.nomeOSC__c, doc.DocumentacaoProjeto__r.Name, doc.Name, doc.Tipo__c, doc.DataVencimento__c, doc.Status__c));
         }
+        
+        system.debug('docsToDisplay ' + docsToDisplay);
         return docsToDisplay;
 	}
     
