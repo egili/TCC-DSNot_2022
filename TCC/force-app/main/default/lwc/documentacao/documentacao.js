@@ -36,8 +36,7 @@ export default class Documentacao extends LightningElement {
     }
 
     formatDate(date) {
-        let format = ((date.getDate())) + "/" + ((date.getMonth() + 1)) + "/" + date.getFullYear();
-        return format;
+        return ((date.getDate())) + "/" + ((date.getMonth() + 1)) + "/" + date.getFullYear();
     }
 
     get semaphoreStyle(){
