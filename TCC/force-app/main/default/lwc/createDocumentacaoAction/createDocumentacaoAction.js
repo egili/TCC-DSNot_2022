@@ -5,9 +5,6 @@ import { CloseActionScreenEvent } from "lightning/actions";
 import getUserName from '@salesforce/apex/DocumentacaoLWCController.getUserName';
 import insertDocumentacao from '@salesforce/apex/DocumentacaoLWCController.insertDocumentacaoInAction';
 
-import DOC_OBJECT from '@salesforce/schema/Documentacao__c';
-import PROJ_FIELD from '@salesforce/schema/Documentacao__c.DocumentacaoProjeto__c';
-
 export default class CreateDocumentacaoAction extends LightningElement {
 
     username;
@@ -97,31 +94,6 @@ export default class CreateDocumentacaoAction extends LightningElement {
         this.isModalOpen = false;
         this.dispatchEvent(new CloseActionScreenEvent());
     }
-
-    /*get descricaoLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.Name.label : '' ;
-    }
-    get dataEmissaoLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.DataEmissao__c.label : '';
-    }
-    get dataVencLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.DataVencimento__c.label : '' ;
-    }
-    get ownerLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.OwnerId.label : '';
-    }
-    get tipoLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.Tipo__c.label : '';
-    }
-    get checkboxProjLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.IsInProjeto__c.label : '';
-    }
-    get docProjLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.DocumentacaoProjeto__c.label : '' ;
-    }
-    get outroTipoLabel() {
-        return this.documentacaoMetadata ? this.documentacaoMetadata.data.fields.OutroTipoDocumentacao__c.label : '' ;
-    }*/
 
     showToast(title, message, variant, mode) {
         const errorToast = new ShowToastEvent({

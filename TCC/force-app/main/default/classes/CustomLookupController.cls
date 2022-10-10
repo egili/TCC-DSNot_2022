@@ -1,21 +1,16 @@
-public without sharing class CustomController {
+public without sharing class CustomLookupController {
 
     @AuraEnabled(cacheable=true)
     public static List<sObject> search(String searchTerm, String fieldApi, String myObject, String filter, String order) {
         
-        if(String.isEmpty(filter)) {
+        if(String.isEmpty(filter)) 
             filter = '';
-        }
-        else {
+        else 
             filter += ' AND';
-        }
 
         String queryBase = 'SELECT {0} FROM {1} WHERE {2} {3} ORDER BY {4} {5} LIMIT 5';
 
-        String queryFields = String.join(new List<String> {
-            'Id',
-            fieldApi
-        }, ', ');
+        String queryFields = String.join(new List<String> {'Id', fieldApi}, ', ');
 
         String queryFilter = String.format(!String.isEmpty(searchTerm) ? '{0} LIKE \'%{1}%\'' : '{0} != NULL', new String[] { fieldApi, searchTerm });
 
@@ -23,8 +18,10 @@ public without sharing class CustomController {
 
         System.debug(query);
 
-        List<sObject> List = database.query(query);
+        List<sObject> lookUpList = database.query(query);
+        
+        system.debug('lookupList ' + lookupList);
 
-        return List;
+        return lookUpList;
     }
 }

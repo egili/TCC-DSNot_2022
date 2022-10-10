@@ -22,7 +22,7 @@
                     <section style="display: flex; flex-direction: row; justify-content: space-evenly; white-space: nowrap;">
                         <lightning-input 
                             type="text" 
-                            label={descricaoLabel} 
+                            label="Descrição"
                             value={descricaoValue}
                             onchange={descricaoChange}
                             style="margin-left: -30px; width: 40%;" 
@@ -32,7 +32,7 @@
 
                         <lightning-input 
                             type="text" 
-                            label={ownerLabel} 
+                            label="Autor"
                             value={username} 
                             readonly>
                         </lightning-input>
@@ -41,7 +41,7 @@
                     <section style="display: flex; flex-direction: row; justify-content: space-evenly; white-space: nowrap;">
                         <lightning-input 
                             type="date" 
-                            label={dataEmissaoLabel} 
+                            label="Data de Emissão"
                             value={dataEmissaoValue}
                             onchange={dataEmissaoChange}
                             style="width: 40%" 
@@ -50,7 +50,7 @@
 
                         <lightning-input 
                             type="date" 
-                            label={dataVencLabel} 
+                            label="Data de Vencimento"
                             value={dataVencimentoValue}
                             onchange={dataVencimentoChange}
                             style="width: 40%;">
@@ -61,7 +61,7 @@
                         
                             <template if:true={tipoPicklist.data}>
                                 <lightning-combobox 
-                                    label={tipoLabel} 
+                                    label="Tipo" 
                                     options={tipoPicklist.data.values} 
                                     onchange={tipoPicklistChange} 
                                     value={tipoValue}
@@ -74,7 +74,7 @@
                             <template if:true={isOutroTextVisible}>
                                 <lightning-input 
                                     type="text" 
-                                    label={outroTipoLabel} 
+                                    label="Descrição do tipo" 
                                     value={outroDescricaoValue}
                                     onchange={outroTipoChange}
                                     style="width: 40%; margin-left: 34px;" 
@@ -87,7 +87,7 @@
                     <section style="display: flex; flex-direction: row; align-items: flex-end; margin-top: 7px;">
                         <lightning-input 
                             type="toggle" 
-                            label={checkboxProjLabel} 
+                            label="Faz parte de Projeto?"
                             value={isInProjetoValue} 
                             onchange={isInProjetoChange} 
                             message-toggle-active="Sim" 
@@ -99,21 +99,18 @@
                             <c-custom-lookup
                                 obj-name="Documentacao__c" 
                                 field-api="DocumentacaoProjeto__r.Name" 
-                                search-placeholder="Pesquisar Projeto" 
-                                order="ASC" 
-                                label={docProjLabel}
-                                field-type="text"
-                                filter="DocumentacaoProjeto__r.DataTerminoProjeto__c = null"
                                 icon-name="standard:topic"
+                                label="Projeto relacionado:"
+                                filter="DocumentacaoProjeto__r.DataTerminoProjeto__c = null"
+                                search-placeholder="Pesquisar Projeto" 
+                                field-type="text"
+                                order="ASC" 
                                 icon-title="Projetos"
                                 icon-alternative-text="Icone de Projetos relacionados"
                                 style="width: 40%; margin-left: 77px;">
                             </c-custom-lookup>
-
                         </template>
-                        
                     </section>
-                    
                 </section>
 
                 <div class="slds-modal__footer">
