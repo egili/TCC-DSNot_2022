@@ -13,8 +13,11 @@ export default class CreateDocumentacaoAction extends LightningElement {
     dataVencimentoValue;
     tipoValue;
     outroTipoDescricaoValue;
-    documentacaoProjetoValue;
     isInProjetoValue;
+    @track documentacaoProjetoValue;
+
+    projetoId;
+    projetoName;
 
     isInProjeto = false;
     isOutroTextVisible = false;
@@ -74,6 +77,11 @@ export default class CreateDocumentacaoAction extends LightningElement {
     documentacaoProjetoChange(event) {
         this.documentacaoProjetoValue = event.detail.value;
     }
+    
+    createDocumentacao(event) {
+        this.projetoId = event.detail.id;
+        this.projetoName = event.detail.name;
+    }
 
     handleSave() {
         insertDocumentacao({descricao: this.descricaoValue, dataEmissao: this.dataEmissaoValue, dataVencimento: this.dataEmissaoValue ? this.dataEmissaoValue : null,
@@ -88,6 +96,11 @@ export default class CreateDocumentacaoAction extends LightningElement {
         .finally(() => {
             this.dispatchEvent(new CloseActionScreenEvent());
         })
+    }
+
+    handleSelectedValue(event) {
+        this.documentacaoProjetoValue = event.detail.name;
+        console.log('doc ' + this.documentacaoProjetoValue);
     }
 
     handleClose(event) {

@@ -23,9 +23,9 @@ export default class Documentacao extends LightningElement {
 
             this.statusDoc = this.data[0].status;
 
-            //this.formattedDate = this.formatDate(this.data[0].vencimento);
+            this.formattedDate = this.formatDate(this.data[0].vencimento);
 
-            //console.log('formatada ' + this.formattedDate);
+            console.log('formatada ' + this.formattedDate);
 
             this.isLoading = false;
         })
@@ -36,7 +36,7 @@ export default class Documentacao extends LightningElement {
     }
 
     formatDate(date) {
-        return ((date.getDate())) + "/" + ((date.getMonth() + 1)) + "/" + date.getFullYear();
+        return date.split('/').reverse().join('-');
     }
 
     get semaphoreStyle(){

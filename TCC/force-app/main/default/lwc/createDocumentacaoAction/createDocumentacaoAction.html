@@ -97,16 +97,10 @@
 
                         <template if:true={isInProjeto}>
                             <c-custom-lookup
-                                obj-name="Documentacao__c" 
-                                field-api="DocumentacaoProjeto__r.Name" 
-                                icon-name="standard:topic"
-                                label="Projeto relacionado:"
-                                filter="DocumentacaoProjeto__r.DataTerminoProjeto__c = null"
-                                search-placeholder="Pesquisar Projeto" 
-                                field-type="text"
-                                order="ASC" 
-                                icon-title="Projetos"
-                                icon-alternative-text="Icone de Projetos relacionados"
+                                child-object-api-name="Documentacao__c"
+                                target-field-api-name="DocumentacaoProjeto__c"
+                                onvalueselected={handleSelectedValue}
+                                value={documentacaoProjetoValue}
                                 style="width: 40%; margin-left: 77px;">
                             </c-custom-lookup>
                         </template>
