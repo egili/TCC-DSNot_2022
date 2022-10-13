@@ -23,4 +23,5 @@ public with sharing class DocumentacaoLWCController {
     public static String getUserName(){
 		return UserInfo.getName();
     }
-}
+    
+    }

@@ -1,64 +1,62 @@
 <template>
+    <main class="slds-card card-border-style" style="z-index: 0;">
 
-    <article class="slds-card card-border-style" style="z-index: 0;">
         <div class="slds-card__header slds-grid">
             <header class="slds-media slds-media_center slds-has-flexi-truncate">
-
                 <div class="slds-media__body" style="display: flex; justify-content: center;">
-                    <section class="slds-p-around_medium lgc-bg end-style" style="display: flex; flex-direction: column; align-items: center; gap: 10px">
-                        <lightning-combobox options={options} value={value} placeholder="Selecione" class="combobox-style" style="z-index: 5;"></lightning-combobox>
-                        
-                        <!--
-                            select class="select-style">
-                            <option>Janeiro</option>
-                            <option>Fevereiro</option>
-                            <option>Março</option>
-                            <option>Abril</option>
-                            <option>Maio</option>
-                            <option>Junho</option>
-                            <option>Julho</option>
-                            <option>Agosto</option>
-                            <option>Setembro</option>
-                            <option>Outubro</option>
-                            <option>Novembro</option>
-                            <option>Dezembro</option>
-                        </select-->
 
-                        <!--  
-                        <div style="margin-top: 10px;">
-                            <select class= "form__field1" onchange={handleAmbiente}>
-                                <option value={env}>{produtoOportunidade.Room__c}</option>
-                                <template for:each ={roomPicklist.data.values} for:item="item">
-                                    <option key={item.value} value={item.value} style="font-size: 15px;">{item.value}</option>
-                                </template>
-                            </select>
-                        </div>
-                        <!  -->
+                    <section if:true={fluxoCaixaMetadata.data}>
+                        <section if:true={mesesPicklist.data} class="slds-p-around_medium lgc-bg end-style" style="display: flex; flex-direction: column; align-items: center; gap: 10px">
 
-                        <lightning-formatted-number class="currency-style" value="200000.00" maximum-fraction-digits="2" format-style="currency" currency-code="BRL"></lightning-formatted-number>
+                            <lightning-combobox 
+                                options={mesesPicklist.data.values} 
+                                value={value} 
+                                placeholder="Selecione" 
+                                class="combobox-style">
+                            </lightning-combobox>
+
+                            <lightning-formatted-number 
+                                class="currency-style" 
+                                value="200000.00" 
+                                maximum-fraction-digits="2" 
+                                format-style="currency" 
+                                currency-code="BRL">
+                            </lightning-formatted-number>
+
+                        </section>
                     </section>
-                </div>
 
+                </div>
             </header>
         </div>
 
         <div class="slds-card__body slds-card__body_inner" style="display: flex; flex-direction: row; justify-content: space-evenly;">
 
             <section style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
+
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
                     <g transform="translate(16 0) scale(-1 1)">
                         <path fill="#66c557" d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
                     </g>
                 </svg>
-            
+
                 <div style="padding: 15px;">
                     <p class="text-style text-min-style">Receitas</p>
-                    <p style="color: #66C557;" class="text-style text-max-style">R$ 203.000,00</p>
+
+                    <lightning-formatted-number 
+                        style="color: #66C557;"
+                        class="text-style text-max-style" 
+                        value="203000.00" 
+                        maximum-fraction-digits="2" 
+                        format-style="currency" 
+                        currency-code="BRL">
+                    </lightning-formatted-number>
                 </div>
 
             </section>
 
             <section style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
+
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
                     <g transform="rotate(180 8 8)">
                         <path fill="#e21f1f" d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
@@ -67,10 +65,19 @@
 
                 <div style="padding: 15px;">
                     <p class="text-style text-min-style">Despesas</p>
-                    <p style="color: #E21F1F" class="text-style text-max-style">R$ 3.000,00</p>
+                    
+                    <lightning-formatted-number 
+                        style="color: #E21F1F;"
+                        class="text-style text-max-style" 
+                        value="3000.00" 
+                        maximum-fraction-digits="2" 
+                        format-style="currency" 
+                        currency-code="BRL">
+                    </lightning-formatted-number>
                 </div>
 
             </section>
         </div>
-    </article>
+    </main>
+
 </template>

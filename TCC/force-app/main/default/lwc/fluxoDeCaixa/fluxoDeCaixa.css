@@ -7,6 +7,7 @@
     border-radius: 20px;
     color:#66C557;
     width: 150px;
+    height: 170px;
     --sds-c-input-radius-border: 20px;
 }
 
@@ -23,13 +24,12 @@
     color: white; 
     background-color:#66C557; 
     height: 40px;
-    font-family: 'Roboto';
+    font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 35px;
     text-align: center;
 }
-
 
 .text-min-style{
     font-size: 15px;

@@ -8,7 +8,7 @@ export default class CustomLookupField extends LightningElement {
   @api value;
 
   handleChange(event) {
-      const selectedEvent = new CustomEvent('valueselected', {detail: event.detail.value});
+      const selectedEvent = new CustomEvent('valueselected', {detail: event.detail.name});
       this.dispatchEvent(selectedEvent);
   }
 }

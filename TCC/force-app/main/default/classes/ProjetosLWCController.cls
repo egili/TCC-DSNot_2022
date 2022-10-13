@@ -6,9 +6,6 @@ public with sharing class ProjetosLWCController {
         
         List<Projeto__c> projetos = ProjetoDAO.getProjetos(recordId);
         
-        /*for(Projeto__c proj: projetos){
-            listProjetoVO.add(new ProjetoVO(proj.Id, proj.Name, proj.PeriodoProjeto__c));
-        }*/
         return listProjetoVO;
     }
 }
