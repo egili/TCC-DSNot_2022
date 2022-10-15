@@ -27,4 +27,15 @@ th, td {
     width: 25px;
     border-radius: 50%;
     display: inline-block;
-  }
+}
+
+.itens-style {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-around;
+}
+
+.item-definition-style {
+    cursor: pointer;
+}
