@@ -2,15 +2,16 @@ public with sharing class DocumentacaoLWCController {
 
     @AuraEnabled
     public static List<DocumentacaoVO> getDocumentacao(String recordId){
-        
         List<Documentacao__c> docs = DocumentacaoDAO.getDocumentacoes(recordId);
         List<DocumentacaoVO> docsToDisplay = new List<DocumentacaoVO>();
         
-        for(Documentacao__c doc: docs){
-            docsToDisplay.add(new DocumentacaoVO(doc.Id, doc.nomeOSC__c, doc.DocumentacaoProjeto__r.Name, doc.Name, doc.Tipo__c, doc.DataVencimento__c, doc.Status__c));
-        }
+        String urlDomain = Url.getOrgDomainUrl().toExternalForm();
         
+        for(Documentacao__c doc: docs){
+            docsToDisplay.add(new DocumentacaoVO(doc.Id, doc.nomeOSC__c, doc.DocumentacaoProjeto__c, doc.DocumentacaoProjeto__r.Name, urlDomain, doc.Name, doc.Tipo__c, doc.DataVencimento__c, doc.Status__c));
+        }
         system.debug('docsToDisplay ' + docsToDisplay);
+        
         return docsToDisplay;
 	}
     
@@ -23,5 +24,4 @@ public with sharing class DocumentacaoLWCController {
     public static String getUserName(){
 		return UserInfo.getName();
     }
-    
-    }
+}
