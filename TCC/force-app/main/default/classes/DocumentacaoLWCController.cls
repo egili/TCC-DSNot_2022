@@ -2,7 +2,7 @@ public with sharing class DocumentacaoLWCController {
 
     @AuraEnabled
     public static List<DocumentacaoVO> getDocumentacao(String recordId){
-        List<Documentacao__c> docs = DocumentacaoDAO.getDocumentacoes(recordId);
+        List<Documentacao__c> docs = DocumentacaoDAO.get(recordId);
         List<DocumentacaoVO> docsToDisplay = new List<DocumentacaoVO>();
         
         String urlDomain = Url.getOrgDomainUrl().toExternalForm();

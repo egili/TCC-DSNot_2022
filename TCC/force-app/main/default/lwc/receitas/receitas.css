@@ -1,0 +1,18 @@
+.table-header-style {
+    background-color: #66C557;
+    color: #FFFFFF;
+    font-family: Roboto, sans-serif;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1em;
+    border-bottom: 2px solid white; 
+}

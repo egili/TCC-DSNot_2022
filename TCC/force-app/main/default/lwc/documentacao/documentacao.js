@@ -2,6 +2,7 @@ import { LightningElement, api, track, wire } from 'lwc';
 import getDocumentacao from '@salesforce/apex/DocumentacaoLWCController.getDocumentacao';
 import { ShowToastEvent }  from 'lightning/platformShowToastEvent';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi'; 
+
 export default class Documentacao extends LightningElement {
     
     @api recordId;
@@ -23,7 +24,7 @@ export default class Documentacao extends LightningElement {
 
             this.statusDoc = this.data[0].status;
 
-            this.formattedDate = this.formatDate(this.data[0].vencimento);
+            //this.formattedDate = this.data[0].vencimentotoLocaleDateString('pt-BR', {timeZone: 'UTC'});
 
             console.log('formatada ' + this.formattedDate);
 
@@ -33,10 +34,6 @@ export default class Documentacao extends LightningElement {
             this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
             this.data = undefined;
         })
-    }
-
-    formatDate(date) {
-        return date.split('/').reverse().join('-');
     }
 
     get semaphoreStyle(){

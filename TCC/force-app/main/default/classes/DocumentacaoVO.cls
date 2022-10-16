@@ -1,4 +1,4 @@
-public with sharing class DocumentacaoVO {
+public with sharing class DocumentacaoVO extends RelatedOverrideable {
 
     public DocumentacaoVO(){}
     
@@ -19,17 +19,4 @@ public with sharing class DocumentacaoVO {
     @AuraEnabled public String tipo						{get; set;}
     @AuraEnabled public Date vencimento    				{get; set;}
     @AuraEnabled public String status 					{get; set;}
-    
-    public class RelatedSObject{
-        
-        @AuraEnabled public Id idSObject	   {get; set;}
-        @AuraEnabled public String nameSObject {get; set;}
-        @AuraEnabled public String urlSObject  {get; set;}
-        
-        public RelatedSObject(Id idSObject, String nameSObject, String domain){
-            this.idSObject = idSObject;
-            this.nameSObject = nameSObject;
-            this.urlSObject = domain + '/' + idSObject;
-        }
-    }
 }
