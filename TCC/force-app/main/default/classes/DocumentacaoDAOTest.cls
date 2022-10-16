@@ -9,7 +9,6 @@ private class DocumentacaoDAOTest {
     
     @isTest
     static void getDocumentacoesTest(){
-        
         Id recordId = [SELECT Id FROM Documentacao__c LIMIT 1].Id;
         
         Test.startTest();

@@ -19,11 +19,10 @@
                 </div>
 
                 <section if:true={documentacaoMetadata} class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-
                     <section style="display: flex; flex-direction: row; justify-content: space-evenly; white-space: nowrap;">
                         <lightning-input 
                             type="text" 
-                            label={descricaoLabel} 
+                            label="Descrição"
                             value={descricaoValue}
                             onchange={descricaoChange}
                             style="margin-left: -30px; width: 40%;" 
@@ -33,7 +32,7 @@
 
                         <lightning-input 
                             type="text" 
-                            label={ownerLabel} 
+                            label="Autor"
                             value={username} 
                             readonly>
                         </lightning-input>
@@ -42,7 +41,7 @@
                     <section style="display: flex; flex-direction: row; justify-content: space-evenly; white-space: nowrap;">
                         <lightning-input 
                             type="date" 
-                            label={dataEmissaoLabel} 
+                            label="Data de Emissão"
                             value={dataEmissaoValue}
                             onchange={dataEmissaoChange}
                             style="width: 40%" 
@@ -51,19 +50,18 @@
 
                         <lightning-input 
                             type="date" 
-                            label={dataVencLabel} 
+                            label="Data de Vencimento"
                             value={dataVencimentoValue}
                             onchange={dataVencimentoChange}
                             style="width: 40%;">
                         </lightning-input>
                     </section>
                     
-                    <!-- <section style="display: flex; flex-direction: column;"> -->
+                    <section style="display: flex; flex-direction: row; margin-left: 39px; margin-right: -50px;">
                         
-                        <section style="margin-left: 39px; margin-right: -49px;">
                             <template if:true={tipoPicklist.data}>
                                 <lightning-combobox 
-                                    label={tipoLabel} 
+                                    label="Tipo" 
                                     options={tipoPicklist.data.values} 
                                     onchange={tipoPicklistChange} 
                                     value={tipoValue}
@@ -76,50 +74,43 @@
                             <template if:true={isOutroTextVisible}>
                                 <lightning-input 
                                     type="text" 
-                                    label={outroTipoLabel} 
+                                    label="Descrição do tipo" 
                                     value={outroDescricaoValue}
                                     onchange={outroTipoChange}
-                                    style="width: 40%" 
+                                    style="width: 40%; margin-left: 34px;" 
                                     maxlength="30" 
                                     required>
                                 </lightning-input>
                             </template>
-                        </section>
-                    <!-- </section> -->
+                    </section>
                     
-                    <!-- <section style="display: flex; justify-content: flex-end; white-space: nowrap;"> -->
-                        <section style="margin-top: 17px; margin-left: 52px">
-                            <lightning-input 
-                                type="toggle" 
-                                label={checkboxProjLabel} 
-                                value={isInProjetoValue} 
-                                onchange={isInProjetoChange} 
-                                message-toggle-active="Sim" 
-                                message-toggle-inactive="Não">
-                            </lightning-input>
-                        </section>
+                    <section style="display: flex; flex-direction: row; align-items: flex-end; margin-top: 7px;">
+                        <lightning-input 
+                            type="toggle" 
+                            label="Faz parte de Projeto?"
+                            value={isInProjetoValue} 
+                            onchange={isInProjetoChange} 
+                            message-toggle-active="Sim" 
+                            message-toggle-inactive="Não"
+                            style="margin-left: 73px;">
+                        </lightning-input>
 
-                        <section style="margin-left: 39px; margin-right: -49px;">
-                            <template if:true={isInProjeto}>
-                                <lightning-input 
-                                    placeholder="Pesquisar Projeto" 
-                                    label={docProjLabel} 
-                                    value={documentacaoProjetoValue}
-                                    onchange={documentacaoProjetoChange}
-                                    type="search" 
-                                    style="width: 40%;" 
-                                    required>
-                                </lightning-input>
-                            </template>
-                        </section>
-                    <!-- </section> -->
+                        <template if:true={isInProjeto}>
+                            <c-custom-lookup
+                                child-object-api-name="Documentacao__c"
+                                target-field-api-name="DocumentacaoProjeto__c"
+                                onvalueselected={handleSelectedValue}
+                                value={documentacaoProjetoValue}
+                                style="width: 40%; margin-left: 77px;">
+                            </c-custom-lookup>
+                        </template>
+                    </section>
                 </section>
 
                 <div class="slds-modal__footer">
                     <button class="slds-button slds-button_neutral" onclick={handleClose}>Cancelar</button>
                     <button class="slds-button slds-button_brand" onclick={handleSave}>Salvar</button>
                 </div>
-
             </section>
         </main>
 

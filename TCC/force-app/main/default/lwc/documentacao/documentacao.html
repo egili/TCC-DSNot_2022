@@ -1,12 +1,11 @@
 <template>
 
-    <table if:true={documentacaoMetadata} aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+    <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
         
         <thead>
             <tr class="slds-line-height_reset">
-            
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Projeto">{nomeOSCLabel}</span>
+                    <span class="slds-truncate text-style">OSC</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -15,7 +14,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Periodo">{docProjLabel}</span>
+                    <span class="slds-truncate text-style">Projeto</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -24,7 +23,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Acoes">{nameLabel}</span>
+                    <span class="slds-truncate text-style">Descrição</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -33,7 +32,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Atendidos">{tipoLabel}</span>
+                    <span class="slds-truncate text-style">Tipo</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -42,7 +41,7 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                        <span class="slds-truncate text-style" title="Valor">{dataVencLabel}</span>
+                        <span class="slds-truncate text-style">Vencimento</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
@@ -51,44 +50,52 @@
                 </th>
 
                 <th class="table-header-style" scope="col">
-                    <span class="slds-truncate text-style" title="Valor">{statusLabel}</span>
-                <div class="slds-resizable">
-                    <span class="slds-resizable__handle">
-                        <span class="slds-resizable__divider"></span>
-                    </span>
-                </div>
-            </th>
-
+                    <span class="slds-truncate text-style">Status</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
             </tr>
         </thead>
 
         <tbody>
+            <template for:each={data} for:item="doc">
+                <tr aria-selected="false" class="slds-hint-parent" key={doc.idDocumentacao}>
 
-            <tr aria-selected="false" class="slds-hint-parent">
+                    <th class="slds-cell_action-mode" scope="row">
+                        <span class="slds-item_detail slds-truncate">{doc.nomeOSC}</span>
+                    </th>
 
-                <th class="slds-cell_action-mode" scope="row">
-                    <div class="slds-truncate" title="Acme - 1,200 Widgets">
-                        <a href="#" tabindex="0">Acme - 1,200 Widgets</a>
-                    </div>
-                </th>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <span class="slds-truncate">
+                            <a href={doc.documentacaoProj.urlSObject} target="_blank">{doc.documentacaoProj.nameSObject}</a>
+                        </span>
+                    </td>
 
-                <td class="slds-cell_action-mode" role="gridcell">
-                    <div class="slds-truncate" title="Acme">Acme</div>
-                </td>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <span class="slds-truncate">{doc.nomeDocumento}</span>
+                    </td>
 
-                <td class="slds-cell_action-mode" role="gridcell">
-                    <div class="slds-truncate" title="4/10/15">4/10/15</div>
-                </td>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <span class="slds-truncate">{doc.tipo}</span>
+                    </td>
 
-                <td class="slds-cell_action-mode" role="gridcell">
-                    <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
-                </td>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <span class="slds-truncate">{doc.vencimento}</span>
+                    </td>
 
-                <td class="slds-cell_action-mode" role="gridcell">
-                    <div class="slds-truncate" title="30%">30%</div>
-                </td>
-                
-            </tr>
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <section class="itens-style">
+                            <span class="dot" style={semaphoreStyle}></span>
+                            <lightning-icon icon-name="utility:preview" size="small" class="item-definition-style"></lightning-icon>
+                            <lightning-icon icon-name="utility:edit_form" size="small" class="item-definition-style"></lightning-icon>
+                        </section>
+                    </td>
+                    
+                </tr>
+            </template>
         </tbody>
     </table>
 </template>

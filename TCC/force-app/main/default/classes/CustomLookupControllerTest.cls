@@ -1,5 +1,5 @@
 @isTest
-public class CustomLookupControllerTest {
+private class CustomLookupControllerTest {
 
     @isTest
     static void testOne(){
