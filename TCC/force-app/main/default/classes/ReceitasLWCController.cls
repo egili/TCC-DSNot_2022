@@ -9,8 +9,7 @@ public with sharing class ReceitasLWCController {
 
         
         for(Receitas__c r : listReceitas){
-            listReceitaVO.add(new ReceitasVO(r.Id, r.DataReceita__c, r.Fonte__c, r.Name, r.ValorReceita__c, r.ReceitasProjeto__c,
-                                             r.ReceitasProjeto__r.Name, r.ReceitaPlanilhaOrcamentaria__c, r.ReceitaPlanilhaOrcamentaria__r.Name, urlDomain));
+            listReceitaVO.add(new ReceitasVO(r.Id, r.DataReceita__c, r.Fonte__c, r.Name, r.ValorReceita__c, r.ReceitasProjeto__c, r.ReceitasProjeto__r.Name, r.ReceitaPlanilhaOrcamentaria__c, r.ReceitaPlanilhaOrcamentaria__r.Name, urlDomain));
         }
         return listReceitaVO;
     }
