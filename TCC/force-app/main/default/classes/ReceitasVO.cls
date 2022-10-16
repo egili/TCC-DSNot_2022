@@ -3,6 +3,7 @@ public with sharing class ReceitasVO extends RelatedOverrideable {
     public ReceitasVO(){}
     
     public ReceitasVO(String idReceita, Date dataReceita, String fonte, String descricao, Decimal valor, String idProjeto, String receitaProjeto, String idPlanilha, String receitaPlanilha, String domain){
+        
         this.idReceita = idReceita;
         this.dataReceita = dataReceita;
         this.fonte = fonte;
