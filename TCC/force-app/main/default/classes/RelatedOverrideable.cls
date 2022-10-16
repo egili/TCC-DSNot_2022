@@ -1,3 +1,7 @@
+/**
+ * classe responsavel por permitir a utilização de objetos relacionados em classes do tipo VO
+ */ 
+
 public with sharing virtual class RelatedOverrideable {
     
     protected RelatedOverrideable(){}
