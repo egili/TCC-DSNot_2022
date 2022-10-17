@@ -1,25 +1,25 @@
 .container {
-    position: absolute;
-    z-index: 99999;
-  }
+  position: absolute;
+  z-index: 99999;
+}
   
-  .pillSize {
-    width: 100%;
-  }
+.pillSize {
+  width: 100%;
+}
   
-  lightning-radio-group .slds-radio_faux {
-    margin-right: 10px;
-  }
+lightning-radio-group .slds-radio_faux {
+  margin-right: 10px;
+}
   
-  div.slds-p-top_none.input-mobile > lightning-input {
-    margin: 10px 10px 10px 10px;
-  }
+div.slds-p-top_none.input-mobile > lightning-input {
+  margin: 10px 10px 10px 10px;
+}
   
-  .st-box {
-    position: relative;
-  }
+.st-box {
+  position: relative;
+}
 
-  .searchButtonStyle{
-    margin-top: 4px;
-    margin-right: 0px;
+.searchButtonStyle{
+  margin-top: 4px;
+  margin-right: 0px;
 }
