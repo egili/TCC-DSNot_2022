@@ -59,29 +59,29 @@
                     
                     <section style="display: flex; flex-direction: row; margin-left: 39px; margin-right: -50px;">
                         
-                            <template if:true={tipoPicklist.data}>
-                                <lightning-combobox 
-                                    label="Tipo" 
-                                    options={tipoPicklist.data.values} 
-                                    onchange={tipoPicklistChange} 
-                                    value={tipoValue}
-                                    placeholder="Selecione" 
-                                    style="width: 40%" 
-                                    required>
-                                </lightning-combobox>
-                            </template>
+                        <template if:true={tipoPicklist.data}>
+                            <lightning-combobox 
+                                label="Tipo" 
+                                options={tipoPicklist.data.values} 
+                                onchange={tipoPicklistChange} 
+                                value={tipoValue}
+                                placeholder="Selecione" 
+                                style="width: 40%" 
+                                required>
+                            </lightning-combobox>
+                        </template>
 
-                            <template if:true={isOutroTextVisible}>
-                                <lightning-input 
-                                    type="text" 
-                                    label="Descrição do tipo" 
-                                    value={outroDescricaoValue}
-                                    onchange={outroTipoChange}
-                                    style="width: 40%; margin-left: 34px;" 
-                                    maxlength="30" 
-                                    required>
-                                </lightning-input>
-                            </template>
+                        <template if:true={isOutroTextVisible}>
+                            <lightning-input 
+                                type="text" 
+                                label="Descrição do tipo" 
+                                value={outroDescricaoValue}
+                                onchange={outroTipoChange}
+                                style="width: 40%; margin-left: 34px;" 
+                                maxlength="30" 
+                                required>
+                            </lightning-input>
+                        </template>
                     </section>
                     
                     <section style="display: flex; flex-direction: row; align-items: flex-end; margin-top: 7px;">
