@@ -1,5 +1,5 @@
 <template>
-  <div class="slds-p-horizontal_small">
+  <section class="slds-p-horizontal_small">
     <div class="row">
       <div class="slds-form-element">
         <div class="slds-form-element__control">
@@ -48,10 +48,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <section role="dialog" if:true={isshow}  tabindex="-1" class="slds-modal slds-fade-in-open" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
-          
+
     <div class="slds-modal__container">
       <header class="slds-modal__header">
 
@@ -84,7 +84,9 @@
         <button class="slds-button slds-button_brand">Save</button>
       </footer-->
     </div>
+
   </section>
 
-    <div class="slds-backdrop slds-backdrop_open" if:true={isshow}></div>
+    <div class="slds-backdrop slds-backdrop_open" if:true={isShow}></div>
+
 </template>
