@@ -11,32 +11,33 @@ export default class CustomLookup extends LightningElement {
   @track isShowResult = true;   
   @track showSearchedValues = false;   
 
-  /*@wire(getAccounts, {actName:'$accountName'})
-  retrieveAccounts ({error, data}) {
-    this.messageResult=false;
-      if (data) {
-        // TODO: Error handling 
-        console.log('data::'+data.length);
-        if(data.length>0 && this.isShowResult) {
-          this.accountList = data;                
-          this.showSearchedValues = true; 
-          this.messageResult=false;
-        }            
-        else if(data.length==0) {
-          this.accountList = [];                
-          this.showSearchedValues = false;
-          if(this.accountName!='')
-            this.messageResult=true;               
-        }  
-      } else if (error) {
-        // TODO: Data handling
-        this.accountId =  '';
-        this.accountName =  '';
-        this.accountList=[];           
-        this.showSearchedValues = false;
-        this.messageResult=true;   
-      }
-  }*/
+    /*@wire(getAccounts, {actName:'$accountName'})
+    retrieveAccounts ({error, data}) {
+       this.messageResult=false;
+       if (data) {
+           // TODO: Error handling 
+           console.log('data::'+data.length);
+           if(data.length>0 && this.isShowResult) {
+               this.accountList = data;                
+               this.showSearchedValues = true; 
+               this.messageResult=false;
+           }            
+           else if(data.length==0) {
+               this.accountList = [];                
+               this.showSearchedValues = false;
+               if(this.accountName!='')
+                   this.messageResult=true;               
+           }  
+               
+       } else if (error) {
+           // TODO: Data handling
+           this.accountId =  '';
+           this.accountName =  '';
+           this.accountList=[];           
+           this.showSearchedValues = false;
+           this.messageResult=true;   
+       }
+   }*/
   
   handleClick(event) {
     this.isShowResult = true;   

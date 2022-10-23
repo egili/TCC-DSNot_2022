@@ -6,7 +6,7 @@
 public class TestDataFactory {
     
     public static Projeto__c makeProjeto(){
-        return new Projeto__c(DataInicioProjeto__c = System.today() - 1);
+        return new Projeto__c(DataInicioProjeto__c = System.today() - 1, Name = 'projeto');
     }
     
     public static PlanilhaOrcamentaria__c makePlanilhaOrcamentaria(){
