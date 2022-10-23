@@ -13,7 +13,7 @@ private class DocumentacaoVOTest {
     @isTest
     static void constructorOverloadTest(){
         Test.startTest();
-        DocumentacaoVO docVO = new DocumentacaoVO('id', 'nomeosc', 'docproj', 'documento', 'tipo', Date.today(), 'status');
+        DocumentacaoVO docVO = new DocumentacaoVO('idDocumentacao', 'nomeOSC', 'idDocumentacaoProjeto', 'documentacaoProj', 'domain', 'nomeDocumento', 'status', Date.today(), 'status');
         Test.stopTest();
         
         System.assert(docVO != null);

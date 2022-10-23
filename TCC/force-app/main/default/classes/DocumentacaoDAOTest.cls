@@ -12,7 +12,7 @@ private class DocumentacaoDAOTest {
         Id recordId = [SELECT Id FROM Documentacao__c LIMIT 1].Id;
         
         Test.startTest();
-        List<Documentacao__c> ret = DocumentacaoDAO.getDocumentacoes(recordId);
+        List<Documentacao__c> ret = DocumentacaoDAO.get(recordId);
         Test.stopTest();
         
         System.assert(ret.size() > 0);
