@@ -20,7 +20,6 @@ export default class Documentacao extends LightningElement {
         getDocumentacao({recordId: this.recordId})
         .then(result => {
             this.data = result;
-            console.log("results ", this.data[0].status);
 
             this.statusDoc = this.data[0].status;
 
@@ -36,8 +35,12 @@ export default class Documentacao extends LightningElement {
         })
     }
 
+    handleEditClick() {
+        alert('tst')
+    }
+
     get semaphoreStyle(){
-        return this.statusDoc == "Atualizado" ? `background-color:#66C557;` : this.statusDoc == "Próximo ao Vencimento" ? `background-color: #ebee38;` : this.statusDoc == "Desatualizado" ? `background-color: #d81717;`: "";
+        return this.statusDoc == "Atualizado" ? `background-color:#66C557;` : this.statusDoc == "Próximo ao Vencimento" ? `background-color: #ebee38;` : `background-color: #d81717;`;
     }
     
     showToast(title, message, variant, mode) {

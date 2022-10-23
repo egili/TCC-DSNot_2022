@@ -1,43 +1,71 @@
 import { LightningElement, wire, track } from 'lwc';
 //import getAccounts from '@salesforce/apex/AccountSearchController.getAccounts';
+import getProjetos from '@salesforce/apex/ProjetoSearchController.getProjetos';
 
 export default class projetoSearchLookup extends LightningElement {
 
-    @track accountName = '';
-    @track accountList = [];     
-    @track accountId; 
+    @track projName = '';
+
+    @track projList = [];    
+
+    @track projId; 
+
     @track isShow = false;
     @track messageResult = false;
     @track isShowResult = true;   
     @track showSearchedValues = false;   
 
-    /*@wire(getAccounts, {actName:'$accountName'})
+    @wire(getProjetos, {projName: '$projName'})
+    retrieveProjetos({error, data}) {
+        this.messageResult = false;
+        if(data) {
+            if(data.length > 0 && this.isShowResult) {
+                this.projList = data;
+                this.showSearchedValues = true;
+                this.messageResult = false;
+            } else if(data.length == 0) {
+                this.projList = [];
+                this.showSearchedValues = false;
+                
+                if(this.projName != '')
+                    this.messageResult = true;
+            } else if(error) {
+                this.projId = '';
+                this.projName = '';
+                this.projList = [];
+                this.showSearchedValues = false;
+                this.messageResult = true;   
+            }
+        }
+    }
+
+    /*@wire(getAccounts, {actName:'$projName'})
     retrieveAccounts ({error, data}) {
         this.messageResult=false;
         if (data) {
             // TODO: Error handling 
             console.log('data::'+data.length);
             if(data.length>0 && this.isShowResult) {
-            this.accountList = data;                
+            this.projList = data;                
             this.showSearchedValues = true; 
             this.messageResult=false;
         }            
         else if(data.length==0) {
-            this.accountList = [];                
+            this.projList = [];                
             this.showSearchedValues = false;
-            if(this.accountName!='')
+            if(this.projName!='')
                 this.messageResult=true;               
             }  
         } else if (error) {
             // TODO: Data handling
-            this.accountId =  '';
-            this.accountName =  '';
-            this.accountList=[];           
+            this.projId =  '';
+            this.projName =  '';
+            this.projList=[];           
             this.showSearchedValues = false;
             this.messageResult=true;   
         }
     }*/
-  
+    
     handleClick(event) {
         this.isShowResult = true;   
         this.messageResult = false;        
@@ -45,7 +73,7 @@ export default class projetoSearchLookup extends LightningElement {
 
     handleKeyChange(event) {       
         this.messageResult = false; 
-        this.accountName = event.target.value;
+        this.projName = event.target.value;
     }  
 
     handleParentSelection(event) {        
@@ -53,18 +81,17 @@ export default class projetoSearchLookup extends LightningElement {
         this.isShowResult = false;
         this.messageResult = false;
         //Set the parent calendar id
-        this.accountId = event.target.dataset.value;
+        this.projId = event.target.dataset.value;
         //Set the parent calendar label
-        this.accountName = event.target.dataset.label;      
-        console.log('accountId::'+this.accountId);    
-        const selectedEvent = new CustomEvent('selected', { detail: this.accountId });
-        // Dispatches the event.
+        this.projName = event.target.dataset.label;      
+        console.log('projId::'+this.projId);   
+    
+        const selectedEvent = new CustomEvent('selected', { detail: this.projId });
         this.dispatchEvent(selectedEvent);    
     }
 
     handleOpenModal(event) {
         this.isShow = true;
-        console.log('balaji:::');
     }
 
     handleCloseModal(event) {
@@ -75,12 +102,12 @@ export default class projetoSearchLookup extends LightningElement {
         this.isShowResult = false;
         this.messageResult = false;
         this.isShow = false;
-        this.accountId = event.detail.id;
+        this.projId = event.detail.id;
         console.log(event.detail.id);
         //console.log('JSON OBject:'+JSON.stringify(event.detail));
-        this.accountName = event.detail.fields.Name.value;
-        const selectedEvent = new CustomEvent('selected', { detail: this.accountId });
-        // Dispatches the event.
+        this.projName = event.detail.fields.Name.value;
+
+        const selectedEvent = new CustomEvent('selected', { detail: this.projId });
         this.dispatchEvent(selectedEvent);
     }
 

@@ -1,4 +1,4 @@
-import { LightningElement, track, wire, api } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 import getProjeto from '@salesforce/apex/ProjetosLWCController.getDadosProjetos';
 import { ShowToastEvent }  from 'lightning/platformShowToastEvent';
 
