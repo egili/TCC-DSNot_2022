@@ -7,7 +7,7 @@ private class RelatedOverrideableTest {
         RelatedOverrideable r = new RelatedOverrideable();
         Test.stopTest();
         
-        System.assert(r != null);
+        Assert.isTrue(r != null);
     }
     
     @isTest
@@ -16,6 +16,6 @@ private class RelatedOverrideableTest {
         RelatedOverrideable.RelatedSObject rs = new RelatedOverrideable.RelatedSObject('id', 'name', 'domain'); 
         Test.stopTest();
         
-        System.assert(rs != null);
+        Assert.isTrue(rs != null);
     }
 }
