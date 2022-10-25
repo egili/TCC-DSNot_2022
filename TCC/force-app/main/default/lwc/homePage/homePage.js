@@ -35,7 +35,7 @@ export default class HomePage extends LightningElement {
     }
 
     get cardColor() {
-        return this.docsNumber == 0 ? `background-color:#66C557;` : this.docsNumber > 0 && this.docsNumber <= 10 ? `background-color: #ebee38;` : `background-color: #d81717;`;
+        return this.docsNumber == 0 ? `background-color:#66C557;` : this.docsNumber > 0 && this.docsNumber <= 20 ? `background-color: #ebee38;` : `background-color: #d81717;`;
     }
 
     showToast(title, message, variant, mode) {
