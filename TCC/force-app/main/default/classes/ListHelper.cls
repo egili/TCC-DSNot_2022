@@ -7,7 +7,6 @@ public class ListHelper {
         for ( String data : baseList  ) {
             filtered.add( data );
         }
-
         return filtered;
     }
 
@@ -21,7 +20,6 @@ public class ListHelper {
             if ( data.get('Id') == null ) continue;
             filtered.add( (Id) data.get('Id') );
         }
-
         return filtered;
     }
 
@@ -37,8 +35,9 @@ public class ListHelper {
             if ( data.get(fieldNameForFilter) == null ) continue;
             filtered.add( '' + data.get(fieldNameForFilter) );
         }
-        List<String> result =  new List<String>();
+        List<String> result = new List<String>();
         result.addAll (filtered);
+                
         return result;
     }
 
@@ -61,7 +60,7 @@ public class ListHelper {
 
             values.put(value , data );
         }
-
+                
         return values;
     }
 

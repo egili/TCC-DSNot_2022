@@ -10,7 +10,7 @@ public with sharing class ReceitasTriggerHandlerHelper {
         for(Receitas__c receita : rList){
             mesReceita = receita.DataReceita__c.month();
             receita.Mes__c = mesReceita;
-            system.debug('mes da receita ' + receita.mes__c);
+
             rToUpdate.add(receita);
         }
         update rToUpdate;

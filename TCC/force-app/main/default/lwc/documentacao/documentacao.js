@@ -27,6 +27,8 @@ export default class Documentacao extends LightningElement {
 
             console.log('formatada ' + this.formattedDate);
 
+            console.log ("PEIDO:" + this.data[0].vencimento)
+
             this.isLoading = false;
         })
         .catch(error => {

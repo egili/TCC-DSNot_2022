@@ -10,7 +10,7 @@ public with sharing class DespesasTriggerHandlerHelper {
         for(Despesas__c Despesa : dList){
             mesReceita = Despesa.DataDespesa__c.month();
             Despesa.Mes__c = mesReceita;
-            system.debug('mes da Despesa ' + Despesa.mes__c);
+
             dToUpdate.add(Despesa);
         }
         update dToUpdate;
