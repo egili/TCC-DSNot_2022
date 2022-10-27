@@ -11,6 +11,7 @@ export default class Documentacao extends LightningElement {
     @track isLoading = true;
 
     statusDoc;
+    dateFromVencimento;
     formattedDate;
 
     @wire(getObjectInfo, { objectApiName: "Documentacao__c" })
@@ -25,7 +26,9 @@ export default class Documentacao extends LightningElement {
 
             //this.formattedDate = this.data[0].vencimentotoLocaleDateString('pt-BR', {timeZone: 'UTC'});
 
-            console.log('formatada ' + this.formattedDate);
+            this.dateFromVencimento = new Date(this.data[0].vencimento);
+
+            this.formattedDate = ((this.addZeroToDate(this.dateFromVencimento.getDate()))) + '/' + (this.addZeroToDate(this.dateFromVencimento.getMonth() + 1)) + '/' + this.dateFromVencimento.getFullYear();
 
             console.log ("PEIDO:" + this.data[0].vencimento)
 
@@ -39,6 +42,10 @@ export default class Documentacao extends LightningElement {
 
     handleEditClick() {
         alert('tst')
+    }
+
+    addZeroToDate(number) {
+        return number <= 9 ? '0' + number : number;
     }
 
     get semaphoreStyle(){
