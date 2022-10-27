@@ -20,7 +20,6 @@ export default class Despesas extends LightningElement {
             this.dateFromDataDespesa = new Date(this.data[0].dataDespesa);
 
             this.formattedDate = ((this.addZeroToDate(this.dateFromDataDespesa.getDate() + 1))) + '/' + (this.addZeroToDate(this.dateFromDataDespesa.getMonth() + 1)) + '/' + this.dateFromDataDespesa.getFullYear();
-
         })
         .catch(error => {
             this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
