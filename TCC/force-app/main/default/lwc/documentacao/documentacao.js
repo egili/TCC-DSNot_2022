@@ -28,7 +28,7 @@ export default class Documentacao extends LightningElement {
 
             this.dateFromVencimento = new Date(this.data[0].vencimento);
 
-            this.formattedDate = ((this.addZeroToDate(this.dateFromVencimento.getDate()))) + '/' + (this.addZeroToDate(this.dateFromVencimento.getMonth() + 1)) + '/' + this.dateFromVencimento.getFullYear();
+            this.formattedDate = ((this.addZeroToDate(this.dateFromVencimento.getDate() + 1))) + '/' + (this.addZeroToDate(this.dateFromVencimento.getMonth() + 1)) + '/' + this.dateFromVencimento.getFullYear();
 
             console.log ("PEIDO:" + this.data[0].vencimento)
 
