@@ -25,6 +25,7 @@ export default class Projetos extends LightningElement {
             this.dateFromDataInicio = new Date(this.data[0].dataInicio);
 
             this.formattedDateInicio = ((this.addZeroToDate(this.dateFromDataInicio.getDate() + 1))) + '/' + (this.addZeroToDate(this.dateFromDataInicio.getMonth() + 1)) + '/' + this.dateFromDataInicio.getFullYear();
+
         })
         .catch(error => {
             this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
