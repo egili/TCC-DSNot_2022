@@ -15,4 +15,12 @@ public with sharing class DespesasTriggerHandlerHelper {
         }
         update dToUpdate;
     }
+    
+    public static void insertInFluxoCaixa(List<Despesas__c> triggerNew){
+        FluxoCaixa__c fluxo = [SELECT Id FROM FluxoCaixa__c LIMIT 1];
+        
+        for(Despesas__c d : triggerNew){
+			d.FluxoCaixa__c = fluxo.Id;
+        }
+    }
 }

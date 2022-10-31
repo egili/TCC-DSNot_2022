@@ -15,4 +15,12 @@ public with sharing class ReceitasTriggerHandlerHelper {
         }
         update rToUpdate;
     }
+    
+    public static void insertInFluxoCaixa(List<Receitas__c> triggerNew){
+        FluxoCaixa__c fluxo = [SELECT Id FROM FluxoCaixa__c LIMIT 1];
+        
+        for(Receitas__c r : triggerNew){
+			r.FluxoCaixa__c = fluxo.Id;
+        }
+    }
 }

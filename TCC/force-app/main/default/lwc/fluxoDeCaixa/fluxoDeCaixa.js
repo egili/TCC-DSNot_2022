@@ -1,12 +1,20 @@
 import { LightningElement, wire, track } from 'lwc';
 import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
 import { ShowToastEvent }  from 'lightning/platformShowToastEvent';
-import getReceitas from '@salesforce/apex/FluxoCaixaLWCController.getReceitas';
+import getTotalDespesas from '@salesforce/apex/FluxoCaixaLWCController.getTotalDespesas';
+import getTotalReceitas from '@salesforce/apex/FluxoCaixaLWCController.getTotalReceitas';
+import getSaldoAnual from '@salesforce/apex/FluxoCaixaLWCController.getSaldoAnual';
+import getTotalReceitasAnual from '@salesforce/apex/FluxoCaixaLWCController.getTotalReceitasAnual';
+import getTotalDespesasAnual from '@salesforce/apex/FluxoCaixaLWCController.getTotalDespesasAnual';
 
 export default class FluxoDeCaixa extends LightningElement {
 
     @track monthInNumericValue;
-    @track valorTotalReceitas;
+    @track valorMensalReceitas;
+    @track valorMensalDespesas;
+    saldoAnual;
+    totalReceitasAnual;
+    totalDespesasAnual;
 
     @wire(getObjectInfo, { objectApiName: "FluxoCaixa__c" })
     fluxoCaixaMetadata;
@@ -14,30 +22,72 @@ export default class FluxoDeCaixa extends LightningElement {
     @wire(getPicklistValues, { recordTypeId: "$fluxoCaixaMetadata.data.defaultRecordTypeId", fieldApiName: "FluxoCaixa__c.Meses__c" })
     mesesPicklist;
 
-    callGetReceitas(mes) {
-        
-        if(mes == null){
-            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
-        }
+    renderedCallback() {
+        this.valorMensalDespesas = '';
+        this.valorMensalReceitas = '';
+    }
 
-        getReceitas({mes: mes})
+    connectedCallback() {
+        getSaldoAnual({})
         .then(data => {
-            console.log(data);
-
-            if(data.length == 0){
-                this.showToast('Selecione outro mês', 'Nenhuma receita cadastrada para o mês selecionado', 'warning', 'dismissible');
-            }
-
-            
-
+            this.saldoAnual = data;
         })
         .catch(error => {
             this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
-        })        
+        })
+
+        getTotalReceitasAnual({})
+        .then(data => {
+            this.totalReceitasAnual = data;
+        })
+        .catch(error => {
+            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+        })
+
+        getTotalDespesasAnual({})
+        .then(data => {
+            this.totalDespesasAnual = data;
+        })
+        .catch(error => {
+            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+        })
+
+    }
+
+    handleClick(event) {
+        this.callGet(this.monthInNumericValue);
+    }
+
+    callGet(mes) {
+        if(mes == null) {
+            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+        }
+
+        getTotalDespesas({mes: mes})
+        .then(data => {
+            this.valorMensalDespesas = data;
+            console.log('aqui ' , this.valorMensalDespesas)
+        })
+        .catch(error => {
+            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+        })
+
+        getTotalReceitas({mes: mes})
+        .then(data => {
+            this.valorMensalReceitas = data;
+            console.log('aqui tb ' , this.valorMensalReceitas)
+        })
+        .catch(error => {
+            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+        })
+    }
+
+    get saldoMensal() {
+        return this.valorMensalReceitas - this.valorMensalDespesas;
     }
 
     handleChangeMesesPicklist(event) {
-        switch(event.detail.value){
+        switch(event.detail.value) {
             case 'Janeiro':
                 this.monthInNumericValue = 1;
                 break;
@@ -86,9 +136,7 @@ export default class FluxoDeCaixa extends LightningElement {
                 this.monthInNumericValue = 12;
                 break;
         } 
-
-        this.callGetReceitas(this.monthInNumericValue);
-
+        this.callGet(this.monthInNumericValue);
     }
 
     showToast(title, message, variant, mode) {

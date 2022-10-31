@@ -65,7 +65,13 @@
                     </td>
 
                     <td class="slds-cell_action-mode" role="gridcell">
-                        <span class="slds-truncate">{desp.valorDespesa}</span>
+                        <lightning-formatted-number 
+                            class="currency-style slds-truncate" 
+                            value={desp.valorDespesa} 
+                            maximum-fraction-digits="2" 
+                            format-style="currency" 
+                            currency-code="BRL">
+                        </lightning-formatted-number>
                     </td>
                     
                     <td class="slds-cell_action-mode" role="gridcell">

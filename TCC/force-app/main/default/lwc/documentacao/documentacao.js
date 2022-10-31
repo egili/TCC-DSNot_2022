@@ -24,13 +24,9 @@ export default class Documentacao extends LightningElement {
 
             this.statusDoc = this.data[0].status;
 
-            //this.formattedDate = this.data[0].vencimentotoLocaleDateString('pt-BR', {timeZone: 'UTC'});
-
             this.dateFromVencimento = new Date(this.data[0].vencimento);
 
             this.formattedDate = ((this.addZeroToDate(this.dateFromVencimento.getDate() + 1))) + '/' + (this.addZeroToDate(this.dateFromVencimento.getMonth() + 1)) + '/' + this.dateFromVencimento.getFullYear();
-
-            console.log ("PEIDO:" + this.data[0].vencimento)
 
             this.isLoading = false;
         })
