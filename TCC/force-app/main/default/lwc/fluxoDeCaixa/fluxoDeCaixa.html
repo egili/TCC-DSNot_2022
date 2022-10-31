@@ -3,26 +3,84 @@
 
         <div class="slds-card__header slds-grid">
             <header class="slds-media slds-media_center slds-has-flexi-truncate">
-                <div class="slds-media__body" style="display: flex; justify-content: center;">
+                <div class="slds-media__body flex center-flex">
 
                     <section if:true={fluxoCaixaMetadata.data}>
-                        <section if:true={mesesPicklist.data} class="slds-p-around_medium lgc-bg end-style" style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+                        <section if:true={mesesPicklist.data} class="slds-p-around_medium lgc-bg end-style flex column-style">
 
                             <lightning-combobox 
                                 options={mesesPicklist.data.values} 
                                 value={value} 
+                                onchange={handleChangeMesesPicklist}
                                 placeholder="Selecione" 
-                                class="combobox-style">
+                                class="combobox-style receitas-color">
                             </lightning-combobox>
 
-                            <lightning-formatted-number 
-                                class="currency-style" 
-                                value="200000.00" 
-                                maximum-fraction-digits="2" 
-                                format-style="currency" 
-                                currency-code="BRL">
-                            </lightning-formatted-number>
+                            <div class="flex row">
+                                <div class="lil-pad-style">
+                                    <div class="flex reverse-column-style">
+                                        <p class="text-style text-min-style myDIV help-cursor-style center-text-style">Saldo Mensal</p>
+                                        <div class="hide">Saldo: subtração entre receitas e despesas</div>
+                                    </div>
 
+                                    <lightning-formatted-number 
+                                        class="currency-style" 
+                                        value={saldoMensal} 
+                                        maximum-fraction-digits="2" 
+                                        format-style="currency" 
+                                        currency-code="BRL">
+                                    </lightning-formatted-number>
+                                </div>
+
+                                <div class="lil-pad-style">
+                                    <div class="flex reverse-column-style">
+                                        <p class="text-style text-min-style myDIV help-cursor-style center-text-style">Saldo Anual</p>
+                                        <div class="hide">Saldo: subtração entre receitas e despesas</div>
+                                    </div>
+
+                                    <lightning-formatted-number 
+                                        class="currency-style" 
+                                        value={saldoAnual} 
+                                        maximum-fraction-digits="2" 
+                                        format-style="currency" 
+                                        currency-code="BRL">
+                                    </lightning-formatted-number>
+                                </div>
+
+                                <div class="lil-pad-style">
+
+                                    <div class="flex reverse-column-style">
+                                        <p class="text-style text-min-style myDIV help-cursor-style center-text-style">Total Anual de Receitas</p>
+                                        <div class="hide">Soma de todas as Receitas deste ano</div>
+                                    </div>
+
+                                    <lightning-formatted-number 
+                                        class="currency-style receitas-color" 
+                                        value={totalReceitasAnual} 
+                                        maximum-fraction-digits="2" 
+                                        format-style="currency" 
+                                        currency-code="BRL"
+                                        style="margin-top: 43px;">
+                                    </lightning-formatted-number>
+                                </div>
+
+                                <div class="lil-pad-style">
+                                    
+                                    <div class="flex reverse-column-style">
+                                        <p class="text-style text-min-style myDIV help-cursor-style center-text-style">Total Anual de Despesas</p>
+                                        <div class="hide">Soma de todas as Despesas deste ano</div>
+                                    </div>
+
+                                    <lightning-formatted-number 
+                                        class="currency-style despesas-color" 
+                                        value={totalDespesasAnual} 
+                                        maximum-fraction-digits="2" 
+                                        format-style="currency" 
+                                        currency-code="BRL"
+                                        style="margin-top: 45px;">
+                                    </lightning-formatted-number>
+                                </div>
+                            </div>
                         </section>
                     </section>
 
@@ -30,9 +88,9 @@
             </header>
         </div>
 
-        <div class="slds-card__body slds-card__body_inner" style="display: flex; flex-direction: row; justify-content: space-evenly;">
+        <div class="slds-card__body slds-card__body_inner flex row evenly">
 
-            <section style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
+            <section class="flex row start">
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
                     <g transform="translate(16 0) scale(-1 1)">
@@ -40,13 +98,12 @@
                     </g>
                 </svg>
 
-                <div style="padding: 15px;">
+                <div class="lil-pad-style">
                     <p class="text-style text-min-style">Receitas</p>
 
                     <lightning-formatted-number 
-                        style="color: #66C557;"
-                        class="text-style text-max-style" 
-                        value="203000.00" 
+                        class="text-style text-max-style receitas-color" 
+                        value={valorMensalReceitas}
                         maximum-fraction-digits="2" 
                         format-style="currency" 
                         currency-code="BRL">
@@ -55,7 +112,7 @@
 
             </section>
 
-            <section style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
+            <section class="flex row start">
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
                     <g transform="rotate(180 8 8)">
@@ -63,13 +120,12 @@
                     </g>
                 </svg>
 
-                <div style="padding: 15px;">
+                <div class="lil-pad-style">
                     <p class="text-style text-min-style">Despesas</p>
                     
                     <lightning-formatted-number 
-                        style="color: #E21F1F;"
-                        class="text-style text-max-style" 
-                        value="3000.00" 
+                        class="text-style text-max-style despesas-color" 
+                        value={valorMensalDespesas}
                         maximum-fraction-digits="2" 
                         format-style="currency" 
                         currency-code="BRL">
@@ -79,5 +135,4 @@
             </section>
         </div>
     </main>
-
 </template>

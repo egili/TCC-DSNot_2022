@@ -3,32 +3,26 @@
     border-radius: 5px 5px 25px 25px;
 }
 
-.combobox-style {
+.combobox-style{
     border-radius: 20px;
-    color:#66C557;
     width: 150px;
-    height: 170px;
+    height: 110px;
     --sds-c-input-radius-border: 20px;
 }
 
 .currency-style{
-    font-size: 40px;
+    font-size: 30px;
     font-family: Roboto, sans-serif;
     font-weight: 400;
     text-align: center;
 }
 
-.select-style{
-    border-radius: 20px; 
-    width: 200px; 
-    color: white; 
-    background-color:#66C557; 
-    height: 40px;
-    font-family: Roboto, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    text-align: center;
+.receitas-color{
+    color:#66C557;
+}
+
+.despesas-color{
+    color: #E21F1F;
 }
 
 .text-min-style{
@@ -43,4 +37,53 @@
     font-family: Roboto, sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
+}
+
+.center-text-style{
+    text-align: center;
+}
+
+.help-cursor-style{
+    cursor: help;
+}
+
+.lil-pad-style{
+    padding: 15px;
+}
+
+.flex{
+    display: flex;
+}
+
+.row{
+    flex-direction: row;
+}
+
+.start{
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.evenly{
+    justify-content: space-evenly;
+}
+
+.reverse-column-style{
+    flex-direction: column-reverse;
+}
+
+.center-flex{
+    justify-content: center;
+}
+
+.column-style{
+    flex-direction: column;
+    align-items: center;
+}
+
+.hide{
+    display: none;
+}
+.myDIV:hover + .hide {
+    display: block;
 }

@@ -11,6 +11,7 @@ export default class Documentacao extends LightningElement {
     @track isLoading = true;
 
     statusDoc;
+    dateFromVencimento;
     formattedDate;
 
     @wire(getObjectInfo, { objectApiName: "Documentacao__c" })
@@ -20,13 +21,12 @@ export default class Documentacao extends LightningElement {
         getDocumentacao({recordId: this.recordId})
         .then(result => {
             this.data = result;
-            console.log("results ", this.data[0].status);
 
             this.statusDoc = this.data[0].status;
 
-            //this.formattedDate = this.data[0].vencimentotoLocaleDateString('pt-BR', {timeZone: 'UTC'});
+            this.dateFromVencimento = new Date(this.data[0].vencimento);
 
-            console.log('formatada ' + this.formattedDate);
+            this.formattedDate = ((this.addZeroToDate(this.dateFromVencimento.getDate() + 1))) + '/' + (this.addZeroToDate(this.dateFromVencimento.getMonth() + 1)) + '/' + this.dateFromVencimento.getFullYear();
 
             this.isLoading = false;
         })
@@ -36,8 +36,16 @@ export default class Documentacao extends LightningElement {
         })
     }
 
+    handleEditClick() {
+        alert('tst')
+    }
+
+    addZeroToDate(number) {
+        return number <= 9 ? '0' + number : number;
+    }
+
     get semaphoreStyle(){
-        return this.statusDoc == "Atualizado" ? `background-color:#66C557;` : this.statusDoc == "Próximo ao Vencimento" ? `background-color: #ebee38;` : this.statusDoc == "Desatualizado" ? `background-color: #d81717;`: "";
+        return this.statusDoc == "Atualizado" ? `background-color:#66C557;` : this.statusDoc == "Próximo ao Vencimento" ? `background-color: #ebee38;` : `background-color: #d81717;`;
     }
     
     showToast(title, message, variant, mode) {

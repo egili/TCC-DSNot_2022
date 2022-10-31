@@ -19,13 +19,13 @@
                 </div>
 
                 <section if:true={documentacaoMetadata} class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                    <section style="display: flex; flex-direction: row; justify-content: space-evenly; white-space: nowrap;">
+                    <section class="title-style">
                         <lightning-input 
                             type="text" 
                             label="Descrição"
                             value={descricaoValue}
                             onchange={descricaoChange}
-                            style="margin-left: -30px; width: 40%;" 
+                            class="descricao-label-style"
                             maxlength="30" 
                             required>
                         </lightning-input>
@@ -38,7 +38,7 @@
                         </lightning-input>
                     </section>
 
-                    <section style="display: flex; flex-direction: row; justify-content: space-evenly; white-space: nowrap;">
+                    <section class="title-style">
                         <lightning-input 
                             type="date" 
                             label="Data de Emissão"
@@ -57,7 +57,7 @@
                         </lightning-input>
                     </section>
                     
-                    <section style="display: flex; flex-direction: row; margin-left: 39px; margin-right: -50px;">
+                    <section class="tipo-picklist-style">
                         
                         <template if:true={tipoPicklist.data}>
                             <lightning-combobox 
@@ -84,7 +84,7 @@
                         </template>
                     </section>
                     
-                    <section style="display: flex; flex-direction: row; align-items: flex-end; margin-top: 7px;">
+                    <section class="projeto-title-style">
                         <lightning-input 
                             type="toggle" 
                             label="Faz parte de Projeto?"
@@ -103,6 +103,8 @@
                                 value={documentacaoProjetoValue}
                                 style="width: 40%; margin-left: 77px;">
                             </c-custom-lookup> -->
+
+                            <c-projeto-search-lookup></c-projeto-search-lookup>
                         </template>
                     </section>
                 </section>

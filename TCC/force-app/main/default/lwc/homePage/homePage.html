@@ -2,15 +2,15 @@
     <section class="status-card-alignment-style">
         
         <div class="status-card-style green-card-style">
-            <p class="text-style text-alignment-style">3 projetos estão vigentes</p>
+            <p class="text-style text-alignment-style">{projectNumber} {pluralOrSingularProjeto}</p>
         </div>
 
         <div class="status-card-style green-card-style">
             <p class="text-style center-card-style">1 prestação de contas está pendente de regularização</p>
         </div>
 
-        <div class="status-card-style red-card-style">
-            <p class="text-style text-alignment-style">5 documentos para atualizar</p>
+        <div class="status-card-style" style={cardColor}>
+            <p class="text-style text-alignment-style">{docsNumber} {pluralOrSingularDocumentacao}</p>
         </div>
 
     </section>

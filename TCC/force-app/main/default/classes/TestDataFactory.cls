@@ -58,10 +58,29 @@ public class TestDataFactory {
         return r;
     }
     
+     public static Receitas__c makeReceita(PlanilhaOrcamentaria__c plan){
+        Receitas__c r = new Receitas__c();
+        r.Fonte__c = 'Fonte';
+        r.DataReceita__c = System.today() - 2;
+        r.ValorReceita__c = 10.0;
+        r.ReceitaPlanilhaOrcamentaria__c = plan.Id;
+        
+        return r;
+    }
+    
     public static Despesas__c makeDespesa(){
         PlanilhaOrcamentaria__c plan = makePlanilhaOrcamentaria();
         insert plan;
         
+        Despesas__c desp = new Despesas__c();
+        desp.ValorDespesa__c = 10.0;
+        desp.DespesasPlanilhaOrcamentaria__c = plan.Id;
+        desp.DataDespesa__c = System.today() - 1;
+        
+        return desp;
+    }
+    
+    public static Despesas__c makeDespesa(PlanilhaOrcamentaria__c plan){
         Despesas__c desp = new Despesas__c();
         desp.ValorDespesa__c = 10.0;
         desp.DespesasPlanilhaOrcamentaria__c = plan.Id;

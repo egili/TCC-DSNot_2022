@@ -83,14 +83,14 @@
                     </td>
 
                     <td class="slds-cell_action-mode" role="gridcell">
-                        <span class="slds-truncate">{doc.vencimento}</span>
+                        <span class="slds-truncate">{formattedDate}</span>
                     </td>
 
                     <td class="slds-cell_action-mode" role="gridcell">
                         <section class="itens-style">
                             <span class="dot" style={semaphoreStyle}></span>
                             <lightning-icon icon-name="utility:preview" size="small" class="item-definition-style"></lightning-icon>
-                            <lightning-icon icon-name="utility:edit_form" size="small" class="item-definition-style"></lightning-icon>
+                            <lightning-icon icon-name="utility:edit_form" size="small" class="item-definition-style" onclick={handleEditClick}></lightning-icon>
                         </section>
                     </td>
                     

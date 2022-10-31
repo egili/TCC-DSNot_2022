@@ -1,4 +1,4 @@
-import { LightningElement, track, wire, api } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 import getProjeto from '@salesforce/apex/ProjetosLWCController.getDadosProjetos';
 import { ShowToastEvent }  from 'lightning/platformShowToastEvent';
 
@@ -11,6 +11,9 @@ export default class Projetos extends LightningElement {
 
     dataFim;
 
+    dateFromDataInicio;
+    formattedDateInicio;
+
     connectedCallback() {
         getProjeto({recordId: this.recordId})
         .then(result => {
@@ -18,6 +21,11 @@ export default class Projetos extends LightningElement {
             this.isLoading = false;
 
             this.dataFim = this.data[0].dataTermino;
+
+            this.dateFromDataInicio = new Date(this.data[0].dataInicio);
+
+            this.formattedDateInicio = ((this.addZeroToDate(this.dateFromDataInicio.getDate() + 1))) + '/' + (this.addZeroToDate(this.dateFromDataInicio.getMonth() + 1)) + '/' + this.dateFromDataInicio.getFullYear();
+
         })
         .catch(error => {
             this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
@@ -27,6 +35,10 @@ export default class Projetos extends LightningElement {
 
     get showDataFim() {
         return this.dataFim != null ? true : false;
+    }
+
+    addZeroToDate(number) {
+        return number <= 9 ? '0' + number : number;
     }
 
     showToast(title, message, variant, mode) {
