@@ -56,7 +56,6 @@ export default class FluxoDeCaixa extends LightningElement {
                 this.showToast('Sem despesas', 'Não foram encontradas despesas cadastradas para o mês selecionado', 'warning', 'dismissible');
 
             this.valorMensalDespesas = data;
-            console.log('aqui ' , this.valorMensalDespesas)
         })
         .catch(error => {
             this.showErrorToast();
@@ -69,7 +68,6 @@ export default class FluxoDeCaixa extends LightningElement {
                 this.showToast('Sem receitas', 'Não foram encontradas despesas receitas para o mês selecionado', 'warning', 'dismissible');
 
             this.valorMensalReceitas = data;
-            console.log('aqui tb ' , this.valorMensalReceitas)
         })
         .catch(error => {
             this.showErrorToast();

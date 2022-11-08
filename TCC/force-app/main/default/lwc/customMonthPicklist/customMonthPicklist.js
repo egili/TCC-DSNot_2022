@@ -61,6 +61,6 @@ export default class CustomMonthPicklist extends LightningElement {
                 this.monthInNumericValue = 12;
             break;
         }
-        this.dispatchEvent(new CustomEvent("monthchange", {detail: this.monthInNumericValue})); 
+        this.dispatchEvent(new CustomEvent("monthchange", { detail: this.monthInNumericValue })); 
     }
 }

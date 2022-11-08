@@ -36,7 +36,7 @@ export default class CreateDocumentacaoAction extends LightningElement {
             this.username = result;
         })
         .catch(error => {
-            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+            this.showErrorToast();
         })
     }
 
@@ -91,7 +91,7 @@ export default class CreateDocumentacaoAction extends LightningElement {
             this.showToast('Sucesso', 'Nova documentação inserida com sucesso', 'success', 'dismissible');
         })
         .catch(error => {
-            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+            this.showErrorToast();
         })
         .finally(() => {
             this.dispatchEvent(new CloseActionScreenEvent());
@@ -109,12 +109,16 @@ export default class CreateDocumentacaoAction extends LightningElement {
     }
 
     showToast(title, message, variant, mode) {
-        const errorToast = new ShowToastEvent({
+        const toast = new ShowToastEvent({
             title: title,
             message: message,
             variant: variant,
             mode: mode
         });
-        this.dispatchEvent(errorToast);
+        this.dispatchEvent(toast);
+    }
+
+    showErrorToast() {
+        this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
     }
 }

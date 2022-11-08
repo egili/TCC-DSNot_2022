@@ -26,7 +26,7 @@ public with sharing class FluxoCaixaLWCController {
     
     @AuraEnabled 
     public static Decimal getSaldoAnual(){
-        return getTotalReceitasAnual() - getTotalDespesasAnual() < 0 ? - ( getTotalReceitasAnual() - getTotalDespesasAnual()) :  getTotalReceitasAnual() - getTotalDespesasAnual();
+        return getTotalReceitasAnual() - getTotalDespesasAnual() < 0 ? -(getTotalReceitasAnual() - getTotalDespesasAnual()) :  getTotalReceitasAnual() - getTotalDespesasAnual();
     }
     
     @AuraEnabled 
@@ -54,6 +54,4 @@ public with sharing class FluxoCaixaLWCController {
         }
         return totalDespesas;
     }
-    
-    
 }

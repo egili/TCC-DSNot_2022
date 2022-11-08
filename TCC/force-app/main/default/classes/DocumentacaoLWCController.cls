@@ -1,6 +1,6 @@
 public with sharing class DocumentacaoLWCController {
 
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<DocumentacaoVO> getDocumentacao(String recordId){
         List<Documentacao__c> docs = DocumentacaoDAO.get(recordId);
         List<DocumentacaoVO> docsToDisplay = new List<DocumentacaoVO>();
@@ -20,7 +20,7 @@ public with sharing class DocumentacaoLWCController {
         insert new Documentacao__c(Name = descricao, DataEmissao__c = dataEmissao, DataVencimento__c = dataVencimento, Tipo__c = tipo, OutroTipoDocumentacao__c = descricaoOutroTipo, DocumentacaoProjeto__c = projetoRelacionado);
     }
     
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static String getUserName(){
 		return UserInfo.getName();
     }

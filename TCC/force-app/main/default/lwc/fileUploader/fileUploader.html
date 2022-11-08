@@ -1,0 +1,10 @@
+<template>
+    <lightning-file-upload
+        label="Anexar Documento"
+        name="fileUploader"
+        accept={acceptedFormats}
+        record-id={idRecord}
+        onuploadfinished={handleUploadFinished}
+        multiple>
+    </lightning-file-upload>
+</template>
