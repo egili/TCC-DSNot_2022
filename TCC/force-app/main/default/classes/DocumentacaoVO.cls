@@ -2,6 +2,12 @@ public with sharing class DocumentacaoVO extends RelatedOverrideable {
 
     public DocumentacaoVO(){}
     
+    public DocumentacaoVO(String idDocumentacaoProjeto,
+                          String documentacaoProj,
+                          String domain){
+    	this.documentacaoProj = new RelatedSObject(idDocumentacaoProjeto, documentacaoProj, domain);
+	}
+    
     public DocumentacaoVO(String idDocumentacao, String nomeOSC, String idDocumentacaoProjeto, String documentacaoProj, String domain, String nomeDocumento, String tipo, Date vencimento, String status){
         this.idDocumentacao   = idDocumentacao;
         this.nomeOSC 		  = nomeOSC;

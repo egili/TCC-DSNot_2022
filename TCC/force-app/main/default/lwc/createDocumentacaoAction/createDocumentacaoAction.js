@@ -22,7 +22,7 @@ export default class CreateDocumentacaoAction extends LightningElement {
     isInProjeto = false;
     isOutroTextVisible = false;
 
-    @track isModalOpen = true;
+    @track isModalOpen = false;
 
     @wire(getObjectInfo, { objectApiName: "Documentacao__c" })
     documentacaoMetadata;

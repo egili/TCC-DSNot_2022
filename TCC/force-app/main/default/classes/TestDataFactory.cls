@@ -21,7 +21,7 @@ public class TestDataFactory {
         insert proj;
         
         Documentacao__c doc = new Documentacao__c();
-        doc.Tipo__c = 'Estatuto';
+        doc.TipoDocumentacao__c = 'Estatuto';
         doc.DataEmissao__c = System.today();
         doc.NomeOSC__c = 'osc';
         doc.DocumentacaoProjeto__c = proj.Id;
@@ -34,7 +34,7 @@ public class TestDataFactory {
     
     public static Documentacao__c makeDocumentacao(Projeto__c proj){
         Documentacao__c doc = new Documentacao__c();
-        doc.Tipo__c = 'Estatuto';
+        doc.TipoDocumentacao__c = 'Estatuto';
         doc.DataEmissao__c = System.today();
         doc.NomeOSC__c = 'osc';
         doc.DocumentacaoProjeto__c = proj.Id;
@@ -72,10 +72,16 @@ public class TestDataFactory {
         PlanilhaOrcamentaria__c plan = makePlanilhaOrcamentaria();
         insert plan;
         
+        Projeto__c proj = makeProjeto();
+        insert proj;
+        
         Despesas__c desp = new Despesas__c();
         desp.ValorDespesa__c = 10.0;
+        desp.Name = 'despesa';
+        desp.Descricao__c = 'descricao';
         desp.DespesasPlanilhaOrcamentaria__c = plan.Id;
         desp.DataDespesa__c = System.today() - 1;
+       	desp.DespesasProjeto__c = proj.Id;
         
         return desp;
     }
