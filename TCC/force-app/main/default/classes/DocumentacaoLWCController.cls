@@ -8,7 +8,6 @@ public with sharing class DocumentacaoLWCController {
         String urlDomain = Url.getOrgDomainUrl().toExternalForm();
         
         for(Documentacao__c doc: docs){
-            
             DocumentacaoVO docVO = new DocumentacaoVO(doc.DocumentacaoProjeto__c, doc.DocumentacaoProjeto__r.Name, urlDomain);
             docVO.idDocumentacao = doc.Id;
             docVO.nomeOSC = doc.nomeOSC__c;
