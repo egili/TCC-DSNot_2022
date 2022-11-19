@@ -13,6 +13,8 @@ export default class Projetos extends LightningElement {
 
     dateFromDataInicio;
     formattedDateInicio;
+    dateFromDataFim;
+    formattedDateFim;
 
     connectedCallback() {
         getProjeto({recordId: this.recordId})
@@ -21,6 +23,10 @@ export default class Projetos extends LightningElement {
             this.isLoading = false;
 
             this.dataFim = this.data[0].dataTermino;
+
+            this.dateFromDataFim = new Date(this.data[0].dataTermino);
+
+            this.formattedDateFim = ((this.addZeroToDate(this.dateFromDataFim.getDate() + 1))) + '/' + (this.addZeroToDate(this.dateFromDataFim.getMonth() + 1)) + '/' + this.dateFromDataFim.getFullYear();
 
             this.dateFromDataInicio = new Date(this.data[0].dataInicio);
 

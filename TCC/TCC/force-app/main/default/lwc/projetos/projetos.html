@@ -22,14 +22,14 @@
                     </div>
                 </th>
 
-                <th class="table-header-style" scope="col">
+                <!-- <th class="table-header-style" scope="col">
                     <span class="slds-truncate text-style">Atendidos</span>
                     <div class="slds-resizable">
                         <span class="slds-resizable__handle">
                             <span class="slds-resizable__divider"></span>
                         </span>
                     </div>
-                </th>
+                </th> -->
 
                 <th class="table-header-style" scope="col">
                     <span class="slds-truncate text-style">Início</span>
@@ -84,9 +84,9 @@
                         <div class="slds-truncate">{proj.descricao}</div>
                     </td>
 
-                    <td class="slds-cell_action-mode" role="gridcell">
+                    <!-- <td class="slds-cell_action-mode" role="gridcell">
                         <div class="slds-truncate">{proj.atendidos}</div>
-                    </td>
+                    </td> -->
 
                     <td class="slds-cell_action-mode" role="gridcell">
                         <div class="slds-truncate">{formattedDateInicio}</div>
@@ -94,7 +94,7 @@
 
                     <template if:true={showDataFim}>
                         <td class="slds-cell_action-mode" role="gridcell">
-                            <div class="slds-truncate">{proj.dataTermino}</div>
+                            <div class="slds-truncate">{formattedDateFim}</div>
                         </td>
                     </template>
 
