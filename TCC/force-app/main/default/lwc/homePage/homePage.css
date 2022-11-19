@@ -23,12 +23,19 @@
 }
 
 .text-style{
-    color: #FFFFFF;
     font-family: Roboto, sans-serif;
     letter-spacing: 1px;
     font-size: 15px;
     white-space: normal;
     font-weight: 700;
+}
+
+.text-clear{
+    color: #FFFFFF;
+}
+
+.text-dark{
+    color: #000000;
 }
 
 .text-alignment-style{
@@ -39,5 +46,7 @@
 }
 
 .center-card-style{
-    padding: 15px 0 5px 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

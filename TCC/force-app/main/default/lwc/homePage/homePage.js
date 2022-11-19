@@ -2,11 +2,13 @@ import { LightningElement, track } from 'lwc';
 import { ShowToastEvent }  from 'lightning/platformShowToastEvent';
 import getProjetoCount from '@salesforce/apex/HomePageLWCController.getNumberOfProjetos';
 import getDocsUpdate from '@salesforce/apex/HomePageLWCController.getDocsToUpdate';
+import getFluxoCaixaInfo from '@salesforce/apex/HomePageLWCController.getFluxoCaixaInfo';
 
 export default class HomePage extends LightningElement {
 
     @track projectNumber;
     @track docsNumber;
+    @track fluxoCaixa;
 
     connectedCallback() {
         getProjetoCount({})
@@ -14,7 +16,7 @@ export default class HomePage extends LightningElement {
             this.projectNumber = result;
         })
         .catch(error => {
-            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+            this.showErrorToast();
         })
 
         getDocsUpdate({})
@@ -22,7 +24,15 @@ export default class HomePage extends LightningElement {
             this.docsNumber = result;
         }) 
         .catch(error => {
-            this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
+            this.showErrorToast();
+        })
+
+        getFluxoCaixaInfo({})
+        .then(result => {
+            this.fluxoCaixa = result;
+        })
+        .catch(error => {
+            this.showErrorToast();
         })
     }
 
@@ -46,5 +56,9 @@ export default class HomePage extends LightningElement {
             mode: mode
         });
         this.dispatchEvent(errorToast);
+    }
+
+    showErrorToast(){
+        this.showToast('Ocorreu um erro', 'Recarregue a página e tente novamente', 'error', 'sticky');
     }
 }

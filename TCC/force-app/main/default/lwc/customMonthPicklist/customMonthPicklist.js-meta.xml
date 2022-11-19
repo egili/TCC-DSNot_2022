@@ -7,11 +7,5 @@
         <target>lightning__RecordPage</target>
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
-        <target>lightning__RecordAction</target>
     </targets>
-    <targetConfigs>
-        <targetConfig targets="lightning__RecordAction">
-            <actionType>ScreenAction</actionType>
-        </targetConfig>
-    </targetConfigs>
 </LightningComponentBundle>

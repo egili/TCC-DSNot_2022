@@ -26,12 +26,11 @@ public with sharing class FluxoCaixaLWCController {
     
     @AuraEnabled 
     public static Decimal getSaldoAnual(){
-        return getTotalReceitasAnual() - getTotalDespesasAnual() < 0 ? - ( getTotalReceitasAnual() - getTotalDespesasAnual()) :  getTotalReceitasAnual() - getTotalDespesasAnual();
+        return getTotalReceitasAnual() - getTotalDespesasAnual() < 0 ? -(getTotalReceitasAnual() - getTotalDespesasAnual()) :  getTotalReceitasAnual() - getTotalDespesasAnual();
     }
     
     @AuraEnabled 
     public static Decimal getTotalReceitasAnual(){
-        
 	    List<Receitas__c> rList = ReceitasDAO.getAll();        
         Decimal totalReceitas = 0;
         
@@ -44,7 +43,6 @@ public with sharing class FluxoCaixaLWCController {
     
     @AuraEnabled 
     public static Decimal getTotalDespesasAnual(){
-        
 	    List<Despesas__c> dList = DespesasDAO.getAll();
         Decimal totalDespesas = 0;
         
@@ -54,6 +52,4 @@ public with sharing class FluxoCaixaLWCController {
         }
         return totalDespesas;
     }
-    
-    
 }
