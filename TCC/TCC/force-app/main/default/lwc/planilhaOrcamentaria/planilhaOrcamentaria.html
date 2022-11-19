@@ -1,0 +1,59 @@
+<template>
+
+    <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+        
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Nome</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Descrição</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+                
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Projeto</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <template for:each={data} for:item="plan">
+                <tr aria-selected="false" class="slds-hint-parent" key={plan.idPlanilha}>
+
+                    <th class="slds-cell_action-mode" scope="row">
+                        <span class="slds-item_detail slds-truncate">{plan.nomePlanilha}</span>
+                    </th>
+                    
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <span class="slds-truncate">{plan.descricao}</span>
+                    </td>
+                    
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <span class="slds-truncate">
+                            <a href={plan.planilhaProjeto.urlSObject} target="_blank">{plan.planilhaProjeto.nameSObject}</a>
+                        </span>
+                    </td>
+
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</template>

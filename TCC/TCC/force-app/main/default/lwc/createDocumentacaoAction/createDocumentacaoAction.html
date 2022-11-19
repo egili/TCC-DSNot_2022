@@ -1,0 +1,123 @@
+<template>
+    <template if:true={isModalOpen}>
+
+        <main role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <section class="slds-modal__container">
+                
+                <span style="color: white;">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" style="color: white;">
+                        <span class="slds-icon_container slds-icon-utility-announcement slds-current-color">
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                        </span>
+                    </button>
+                </span>
+
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Nova Documentação</h1>
+                </div>
+
+                <section if:true={documentacaoMetadata} class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <section class="title-style">
+                        <lightning-input 
+                            type="text" 
+                            label="Descrição"
+                            value={descricaoValue}
+                            onchange={descricaoChange}
+                            class="descricao-label-style"
+                            maxlength="30" 
+                            required>
+                        </lightning-input>
+
+                        <lightning-input 
+                            type="text" 
+                            label="Autor"
+                            value={username} 
+                            readonly>
+                        </lightning-input> 
+                        
+                    </section>
+
+                    <section class="title-style">
+                        <lightning-input 
+                            type="date" 
+                            label="Data de Emissão"
+                            value={dataEmissaoValue}
+                            onchange={dataEmissaoChange}
+                            style="width: 40%" 
+                            required>
+                        </lightning-input>
+
+                        <lightning-input 
+                            type="date" 
+                            label="Data de Vencimento"
+                            value={dataVencimentoValue}
+                            onchange={dataVencimentoChange}
+                            style="width: 40%;">
+                        </lightning-input>
+                    </section>
+                    
+                    <section class="tipo-picklist-style">
+                        
+                        <template if:true={tipoPicklist.data}>
+                            <lightning-combobox 
+                                label="Tipo" 
+                                options={tipoPicklist.data.values} 
+                                onchange={tipoPicklistChange} 
+                                value={tipoValue}
+                                placeholder="Selecione" 
+                                style="width: 40%" 
+                                required>
+                            </lightning-combobox>
+                        </template>
+
+                        <template if:true={isOutroTextVisible}>
+                            <lightning-input 
+                                type="text" 
+                                label="Descrição do tipo" 
+                                value={outroDescricaoValue}
+                                onchange={outroTipoChange}
+                                style="width: 40%; margin-left: 34px;" 
+                                maxlength="30" 
+                                required>
+                            </lightning-input>
+                        </template>
+                    </section>
+                    
+                    <section class="projeto-title-style">
+                        <lightning-input 
+                            type="toggle" 
+                            label="Faz parte de Projeto?"
+                            value={isInProjetoValue} 
+                            onchange={isInProjetoChange} 
+                            message-toggle-active="Sim" 
+                            message-toggle-inactive="Não"
+                            style="margin-left: 73px;">
+                        </lightning-input>
+
+                        <template if:true={isInProjeto}>
+                            <!-- <c-custom-lookup
+                                child-object-api-name="Documentacao__c"
+                                target-field-api-name="DocumentacaoProjeto__c"
+                                onvalueselected={handleSelectedValue}
+                                value={documentacaoProjetoValue}
+                                style="width: 40%; margin-left: 77px;">
+                            </c-custom-lookup> -->
+
+                            <c-projeto-search-lookup style="width: 40%; margin-left: 77px;"></c-projeto-search-lookup>
+                        </template>
+                    </section>
+                </section>
+
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={handleClose}>Cancelar</button>
+                    <button class="slds-button slds-button_brand" onclick={handleSave}>Salvar</button>
+                </div>
+            </section>
+        </main>
+
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+    </template>
+</template>

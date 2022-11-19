@@ -1,0 +1,93 @@
+<template>
+
+    <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+        
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Descrição</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Data</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+                
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Valor</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Planilha Orçamentária</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Projeto</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <template for:each={data} for:item="desp">
+                <tr aria-selected="false" class="slds-hint-parent" key={desp.idDespesa}>
+
+                    <th class="slds-cell_action-mode" scope="row">
+                        <span class="slds-item_detail slds-truncate">{desp.descricao}</span>
+                    </th>
+                    
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <span class="slds-truncate">{formattedDate}</span>
+                    </td>
+
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <lightning-formatted-number 
+                            class="currency-style slds-truncate" 
+                            value={desp.valorDespesa} 
+                            maximum-fraction-digits="2" 
+                            format-style="currency" 
+                            currency-code="BRL">
+                        </lightning-formatted-number>
+                    </td>
+                    
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <span class="slds-truncate">
+                            <a href={desp.planilhaOrcamentaria.urlSObject} target="_blank">{desp.planilhaOrcamentaria.nameSObject}</a>
+                        </span>
+                    </td>
+
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <span class="slds-truncate">
+                            <a href={desp.projeto.urlSObject} target="_blank">{desp.projeto.nameSObject}</a>
+                        </span>
+                    </td>
+
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</template>
