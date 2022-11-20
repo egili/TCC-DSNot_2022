@@ -23,4 +23,28 @@ public with sharing class DespesasTriggerHandlerHelper {
 			d.FluxoCaixa__c = fluxo.Id;
         }
     }
+    
+     public static void preventAdditionWhenProjIsFinished(List<Despesas__c> triggerNew){
+    	Set<Id> idSet = new Set<Id>();
+
+        if(triggerNew != null){
+            for(Despesas__c desp : triggerNew){
+                if(desp.DespesasProjeto__c != null)
+                    idSet.add(desp.DespesasProjeto__c);
+          	}
+    	}
+        
+        List<Projeto__c> projList = [SELECT Id, StatusProjeto__c FROM Projeto__c WHERE Id IN: idSet];
+        Map<Id, String> idVsStatus = new map<Id, String>();
+        
+        for(Projeto__c proj : projList){
+            if(!idVsStatus.containsKey(proj.Id))
+                idVsStatus.put(proj.Id, proj.StatusProjeto__c);
+        }
+        
+        for(Despesas__c desp : triggerNew){
+            if(idVsStatus.get(desp.DespesasProjeto__c) == 'Finalizado' || idVsStatus.get(desp.DespesasProjeto__c) == 'Cancelado')
+                desp.addError('Não é possível cadastrar uma nova Despesa com o Projeto no status atual');
+        }
+    }
 }

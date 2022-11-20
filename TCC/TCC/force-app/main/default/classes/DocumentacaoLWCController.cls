@@ -16,19 +16,8 @@ public with sharing class DocumentacaoLWCController {
             docVO.vencimento = doc.DataVencimento__c;
             docVO.status = doc.Status__c;
             
-            /*docsToDisplay.add(new DocumentacaoVO(doc.Id, 
-                                                 doc.nomeOSC__c,
-                                                 doc.DocumentacaoProjeto__c,
-                                                 doc.DocumentacaoProjeto__r.Name, 
-                                                 urlDomain, 
-                                                 doc.Name,
-                                                 doc.TipoDocumentacao__c,
-                                                 doc.DataVencimento__c, 
-                                                 doc.Status__c));*/
             docsToDisplay.add(docVO);
         }
-        system.debug('docsToDisplay ' + docsToDisplay);
-        
         return docsToDisplay;
 	}
     

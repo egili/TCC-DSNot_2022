@@ -39,4 +39,28 @@ public with sharing class DocumentacaoTriggerHandlerHelper {
             }
         update docUpdate;
     }
+    
+    public static void preventAdditionWhenProjIsFinished(List<Documentacao__c> triggerNew){
+    	Set<Id> idSet = new Set<Id>();
+
+        if(triggerNew != null){
+            for(Documentacao__c doc : triggerNew){
+                if(doc.DocumentacaoProjeto__c != null)
+                    idSet.add(doc.DocumentacaoProjeto__c);
+          	}
+    	}
+        
+        List<Projeto__c> projList = [SELECT Id, StatusProjeto__c FROM Projeto__c WHERE Id IN: idSet];
+        Map<Id, String> idVsStatus = new map<Id, String>();
+        
+        for(Projeto__c proj : projList){
+            if(!idVsStatus.containsKey(proj.Id))
+                idVsStatus.put(proj.Id, proj.StatusProjeto__c);
+        }
+        
+        for(Documentacao__c doc : triggerNew){
+            if(idVsStatus.get(doc.DocumentacaoProjeto__c) == 'Finalizado' || idVsStatus.get(doc.DocumentacaoProjeto__c) == 'Cancelado')
+                doc.addError('Não é possível adicionar uma Documentação com o Projeto no status atual');
+        }
+    }
 }

@@ -23,4 +23,28 @@ public with sharing class ReceitasTriggerHandlerHelper {
 			r.FluxoCaixa__c = fluxo.Id;
         }
     }
+    
+    public static void preventAdditionWhenProjIsFinished(List<Receitas__c> triggerNew){
+    	Set<Id> idSet = new Set<Id>();
+
+        if(triggerNew != null){
+            for(Receitas__c r : triggerNew){
+                if(r.ReceitasProjeto__c != null)
+                    idSet.add(r.ReceitasProjeto__c);
+          	}
+    	}
+        
+        List<Projeto__c> projList = [SELECT Id, StatusProjeto__c FROM Projeto__c WHERE Id IN: idSet];
+        Map<Id, String> idVsStatus = new map<Id, String>();
+        
+        for(Projeto__c proj : projList){
+            if(!idVsStatus.containsKey(proj.Id))
+                idVsStatus.put(proj.Id, proj.StatusProjeto__c);
+        }
+        
+        for(Receitas__c r : triggerNew){
+            if(idVsStatus.get(r.ReceitasProjeto__c) == 'Finalizado' || idVsStatus.get(r.ReceitasProjeto__c) == 'Cancelado')
+                r.addError('Não é possível cadastrar uma nova Receita com o Projeto no status atual');
+        }
+    }
 }

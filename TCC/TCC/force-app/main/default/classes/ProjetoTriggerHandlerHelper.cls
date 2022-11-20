@@ -17,4 +17,11 @@ public without sharing class ProjetoTriggerHandlerHelper {
             system.debug(e.getMessage() + ' ' + e.getTypeName());
         }
     }
+    
+    public static void deleteRelatedPlanilha(Map<Id, Projeto__c> mapTriggerOld){
+        List<PlanilhaOrcamentaria__c> listPlan = [SELECT Id, PlanilhaOrcamentariaProjeto__c FROM PlanilhaOrcamentaria__c WHERE PlanilhaOrcamentariaProjeto__c IN: mapTriggerOld.keySet()];
+        system.debug('lllllld ' + listPlan);
+        
+        delete listPlan;
+    }
 }
