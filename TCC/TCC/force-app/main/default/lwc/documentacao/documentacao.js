@@ -13,6 +13,7 @@ export default class Documentacao extends LightningElement {
     statusDoc;
     dateFromVencimento;
     formattedDate;
+    vencimentoNull;
 
     @wire(getObjectInfo, { objectApiName: "Documentacao__c" })
     documentacaoMetadata;
@@ -24,10 +25,12 @@ export default class Documentacao extends LightningElement {
 
             this.statusDoc = this.data[0].status;
 
-            this.dateFromVencimento = new Date(this.data[0].vencimento);
-
-            this.formattedDate = ((this.addZeroToDate(this.dateFromVencimento.getDate() + 1))) + '/' + (this.addZeroToDate(this.dateFromVencimento.getMonth() + 1)) + '/' + this.dateFromVencimento.getFullYear();
-
+            if(this.data[0].vencimento == null){
+                this.formattedDate = '';
+            }else{
+                this.dateFromVencimento = new Date(this.data[0].vencimento);
+                this.formattedDate = ((this.addZeroToDate(this.dateFromVencimento.getDate() + 1))) + '/' + (this.addZeroToDate(this.dateFromVencimento.getMonth() + 1)) + '/' + this.dateFromVencimento.getFullYear();
+            }
             this.isLoading = false;
         })
         .catch(error => {

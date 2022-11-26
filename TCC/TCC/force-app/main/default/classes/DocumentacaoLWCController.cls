@@ -13,7 +13,7 @@ public with sharing class DocumentacaoLWCController {
             docVO.nomeOSC = doc.nomeOSC__c;
             docVO.nomeDocumento = doc.Name;
             docVO.tipo = doc.TipoDocumentacao__c == 'Outro' ? doc.OutroTipoDocumentacao__c : doc.TipoDocumentacao__c;
-            docVO.vencimento = doc.DataVencimento__c;
+            docVO.vencimento = doc.DataVencimento__c != null ? doc.DataVencimento__c : null;
             docVO.status = doc.Status__c;
             
             docsToDisplay.add(docVO);
