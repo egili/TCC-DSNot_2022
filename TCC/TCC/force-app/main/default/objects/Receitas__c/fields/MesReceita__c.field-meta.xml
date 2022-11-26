@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MesReceita__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Mes__c = 1, &apos;Janeiro&apos;,
+IF(Mes__c = 2, &apos;Fevereiro&apos;,
+IF(Mes__c = 3, &apos;Março&apos;,
+IF(Mes__c = 4, &apos;Abril&apos;,
+IF(Mes__c = 5, &apos;Maio&apos;,
+IF(Mes__c = 6, &apos;Junho&apos;,
+IF(Mes__c = 7, &apos;Julho&apos;,
+IF(Mes__c = 8, &apos;Agosto&apos;,
+IF(Mes__c = 9, &apos;Setembro&apos;,
+IF(Mes__c = 10, &apos;Outubro&apos;,
+IF(Mes__c = 11, &apos;Novembro&apos;,
+IF(Mes__c = 12, &apos;Dezembro&apos;, &apos;erro&apos;) ) ) ) )) ) ) ) ) ) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Mês da Receita</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -21,19 +21,19 @@ public with sharing class DocumentacaoTriggerHandlerHelper {
                 when 'Regimento Interno'{
                     docUpdate.DataVencimento__c = dataEmissao.addDays(180);
                 }
-                when 'CRCE'{
+                when 'Certificado de Regularidade Cadastral de Entidades – CRCE'{
                     docUpdate.DataVencimento__c = dataEmissao.addDays(180);
                 }
-                when 'CRC'{
+                when 'Certificado de Registro Cadastral – CRC'{
                     docUpdate.DataVencimento__c = dataEmissao.addDays(60);
                 }
-                when 'CND Federal'{
+                when 'Certidão Negativa de Débitos Federal (CND Federal)'{
                     docUpdate.DataVencimento__c = dataEmissao.addDays(80);
                 }
-                when 'CND Estadual'{
+                when 'Certidão Negativa de Débitos Estadual (CND Estadual)'{
                     docUpdate.DataVencimento__c = dataEmissao.addDays(100);
                 }
-                when 'CND Municipal'{
+                when 'Certidão Negativa de Débitos Municipal (CND Municipal)'{
                     docUpdate.DataVencimento__c = dataEmissao.addDays(180);
                 }
             }

@@ -7,36 +7,8 @@
                 <identifier>c_homePage</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>dashboardName</name>
-                    <value>ucCrMjDlkSgjINEQMbpjuhWDklzhrX1</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>height</name>
-                    <value>485</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideOnError</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>desktopDashboards:embeddedDashboard</componentName>
-                <identifier>desktopDashboards_embeddedDashboard</identifier>
-            </componentInstance>
-        </itemInstances>
         <mode>Replace</mode>
         <name>top</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <mode>Replace</mode>
-        <name>bottomLeft</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <mode>Replace</mode>
-        <name>bottomRight</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -47,7 +19,86 @@
                     <value>1440</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>label</name>
+                    <name>reportName</name>
+                    <value>Despesas_por_mes_4l7</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRefreshButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:reportChart</componentName>
+                <identifier>flexipage_reportChart2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cacheAge</name>
+                    <value>1440</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>reportName</name>
+                    <value>Despesas_RUf</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRefreshButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:reportChart</componentName>
+                <identifier>flexipage_reportChart4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <mode>Replace</mode>
+        <name>bottomLeft</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cacheAge</name>
+                    <value>1440</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>reportName</name>
+                    <value>receitas_por_mes_pTi</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRefreshButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:reportChart</componentName>
+                <identifier>flexipage_reportChart3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cacheAge</name>
+                    <value>1440</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>reportName</name>
+                    <value>Receitas_por_Projeto_WwY</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRefreshButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:reportChart</componentName>
+                <identifier>flexipage_reportChart5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <mode>Replace</mode>
+        <name>bottomRight</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cacheAge</name>
+                    <value>1440</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>reportName</name>

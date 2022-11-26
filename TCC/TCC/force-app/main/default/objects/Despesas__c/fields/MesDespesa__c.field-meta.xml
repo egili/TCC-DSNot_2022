@@ -15,7 +15,7 @@ IF(Mes__c = 4, &apos;Abril&apos;,
  IF(Mes__c = 11, &apos;Novembro&apos;, 
  IF(Mes__c = 12, &apos;Dezembro&apos;, &apos;erro&apos;) ) ) ) )) ) ) ) ) ) )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Mes da Despesa</label>
+    <label>Mês da Despesa</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

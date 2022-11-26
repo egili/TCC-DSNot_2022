@@ -82,10 +82,6 @@
     </types>
     <types>
         <members>*</members>
-        <name>CaseSubjectParticle</name>
-    </types>
-    <types>
-        <members>*</members>
         <name>Certificate</name>
     </types>
     <types>
@@ -226,23 +222,11 @@
     </types>
     <types>
         <members>*</members>
-        <name>EmbeddedServiceFieldService</name>
-    </types>
-    <types>
-        <members>*</members>
         <name>EscalationRule</name>
     </types>
     <types>
         <members>*</members>
         <name>EscalationRules</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>EventDelivery</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>EventSubscription</name>
     </types>
     <types>
         <members>*</members>
@@ -443,10 +427,6 @@
     <types>
         <members>*</members>
         <name>SharingSet</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>SiteDotCom</name>
     </types>
     <types>
         <members>*</members>

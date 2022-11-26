@@ -227,4 +227,12 @@
         </columns>
         <masterLabel>Despesas</masterLabel>
     </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Receita__c</field>
+            <table>Projeto__c.PlanilhaOrcamentariaProjeto__r</table>
+        </columns>
+        <masterLabel>Planilhas Orçamentárias</masterLabel>
+    </sections>
 </ReportType>

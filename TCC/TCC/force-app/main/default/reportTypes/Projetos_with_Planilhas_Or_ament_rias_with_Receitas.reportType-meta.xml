@@ -224,4 +224,20 @@
         </columns>
         <masterLabel>Planilha Orcamentária do Projeto</masterLabel>
     </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>MesReceita__c</field>
+            <table>Projeto__c.PlanilhaOrcamentariaProjeto__r.Receitas__r</table>
+        </columns>
+        <masterLabel>Receitas</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Receita__c</field>
+            <table>Projeto__c.PlanilhaOrcamentariaProjeto__r</table>
+        </columns>
+        <masterLabel>Planilhas Orçamentárias</masterLabel>
+    </sections>
 </ReportType>
