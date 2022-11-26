@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TipoDocumentacao__c</fullName>
+    <externalId>false</externalId>
+    <label>Tipo Documentação</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cartão do CNPJ</fullName>
+                <default>false</default>
+                <label>Cartão do CNPJ</label>
+            </value>
+            <value>
+                <fullName>Ata de Eleição</fullName>
+                <default>false</default>
+                <label>Ata de Eleição</label>
+            </value>
+            <value>
+                <fullName>Estatuto</fullName>
+                <default>false</default>
+                <label>Estatuto</label>
+            </value>
+            <value>
+                <fullName>Regimento Interno</fullName>
+                <default>false</default>
+                <label>Regimento Interno</label>
+            </value>
+            <value>
+                <fullName>Certificado de Regularidade Cadastral de Entidades – CRCE</fullName>
+                <default>false</default>
+                <label>Certificado de Regularidade Cadastral de Entidades – CRCE</label>
+            </value>
+            <value>
+                <fullName>Certificado de Registro Cadastral – CRC</fullName>
+                <default>false</default>
+                <label>Certificado de Registro Cadastral – CRC</label>
+            </value>
+            <value>
+                <fullName>Certidão Negativa de Débitos Federal (CND Federal)</fullName>
+                <default>false</default>
+                <label>Certidão Negativa de Débitos Federal (CND Federal)</label>
+            </value>
+            <value>
+                <fullName>Certidão Negativa de Débitos Estadual (CND Estadual)</fullName>
+                <default>false</default>
+                <label>Certidão Negativa de Débitos Estadual (CND Estadual)</label>
+            </value>
+            <value>
+                <fullName>Certidão Negativa de Débitos Municipal (CND Municipal)</fullName>
+                <default>false</default>
+                <label>Certidão Negativa de Débitos Municipal (CND Municipal)</label>
+            </value>
+            <value>
+                <fullName>Outro</fullName>
+                <default>false</default>
+                <label>Outro</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
