@@ -22,7 +22,14 @@
                 </section>
 
                 <section style="display: flex; justify-content: center; flex-direction: row;" class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                    <c-file-uploader></c-file-uploader>
+                    <lightning-file-upload
+                        label=""
+                        name="fileUploader"
+                        accept={acceptedFormats}
+                        record-id={recordId}
+                        onuploadfinished={handleUploadFinished}
+                        multiple>
+                    </lightning-file-upload>
                 </section>
 
                 <section class="slds-modal__footer">
