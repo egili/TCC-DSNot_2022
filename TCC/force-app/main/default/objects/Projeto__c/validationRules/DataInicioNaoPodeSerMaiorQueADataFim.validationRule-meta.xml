@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>DataInicioNaoPodeSerMaiorQueADataFim</fullName>
-    <active>true</active>
-    <errorConditionFormula>DataInicioProjeto__c  &gt;  DataTerminoProjeto__c</errorConditionFormula>
-    <errorMessage>A data de término do projeto não pode ser anterior a data de início</errorMessage>
-</ValidationRule>

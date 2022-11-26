@@ -1,0 +1,113 @@
+<template>
+    <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+        
+        <thead>
+            <tr class="slds-line-height_reset">
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Projeto</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Descrição</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <!-- <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Atendidos</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th> -->
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Início</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+                <template if:true={showDataFim}>
+                    <th class="table-header-style" scope="col">
+                        <span class="slds-truncate text-style">Fim</span>
+                        <div class="slds-resizable">
+                            <span class="slds-resizable__handle">
+                                <span class="slds-resizable__divider"></span>
+                            </span>
+                        </div>
+                    </th>
+                </template>
+
+                <!-- <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Periodo</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th> -->
+
+                <th class="table-header-style" scope="col">
+                    <span class="slds-truncate text-style">Status</span>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <template for:each={data} for:item="proj">
+                <tr aria-selected="false" class="slds-hint-parent" key={proj.idProjeto}>
+
+                    <th class="slds-cell_action-mode" scope="row">
+                        <div class="slds-truncate">{proj.nomeProjeto}</div>
+                    </th>
+
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate">{proj.descricao}</div>
+                    </td>
+
+                    <!-- <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate">{proj.atendidos}</div>
+                    </td> -->
+
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate">{formattedDateInicio}</div>
+                    </td>
+
+                    <template if:true={showDataFim}>
+                        <td class="slds-cell_action-mode" role="gridcell">
+                            <div class="slds-truncate">{formattedDateFim}</div>
+                        </td>
+                    </template>
+
+                    <!-- <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate">{proj.periodo}</div>
+                    </td> -->
+
+                    <td class="slds-cell_action-mode" role="gridcell">
+                        <div class="slds-truncate">{proj.status}</div>
+                    </td>
+                    
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</template>
