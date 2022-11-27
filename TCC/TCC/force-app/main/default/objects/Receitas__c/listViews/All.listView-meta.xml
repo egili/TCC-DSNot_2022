@@ -3,7 +3,6 @@
     <fullName>All</fullName>
     <columns>NAME</columns>
     <columns>DataReceita__c</columns>
-    <columns>Mes__c</columns>
     <columns>ValorReceita__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
