@@ -2,7 +2,7 @@ public with sharing class HomePageLWCController {
 
     @AuraEnabled(cacheable=true)
     public static Integer getNumberOfProjetos(){
-        return [SELECT COUNT() FROM Projeto__c];
+        return [SELECT COUNT() FROM Projeto__c WHERE StatusProjeto__c = 'Aguardando Resposta' OR StatusProjeto__c = 'Aprovado'];
     }
     
     @AuraEnabled(cacheable=true)

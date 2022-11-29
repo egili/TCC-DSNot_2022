@@ -28,21 +28,6 @@
                             </div>
 
                             <div class="lil-pad-style">
-                                <div class="flex reverse-column-style">
-                                    <p class="text-style text-min-style myDIV help-cursor-style center-text-style">Saldo Anual</p>
-                                    <div class="hide">Saldo: subtração entre receitas e despesas</div>
-                                </div>
-
-                                <lightning-formatted-number 
-                                    class="currency-style" 
-                                    value={saldoAnual} 
-                                    maximum-fraction-digits="2" 
-                                    format-style="currency" 
-                                    currency-code="BRL">
-                                </lightning-formatted-number>
-                            </div>
-
-                            <div class="lil-pad-style">
 
                                 <div class="flex reverse-column-style">
                                     <p class="text-style text-min-style myDIV help-cursor-style center-text-style">Total Anual de Receitas</p>
@@ -59,8 +44,9 @@
                                 </lightning-formatted-number>
                             </div>
 
+                            <div class="minus-style">-</div>
+
                             <div class="lil-pad-style">
-                                
                                 <div class="flex reverse-column-style">
                                     <p class="text-style text-min-style myDIV help-cursor-style center-text-style">Total Anual de Despesas</p>
                                     <div class="hide">Soma de todas as Despesas deste ano</div>
@@ -75,6 +61,24 @@
                                     style="margin-top: 45px;">
                                 </lightning-formatted-number>
                             </div>
+
+                            <div class="minus-style">=</div>
+
+                            <div class="lil-pad-style">
+                                <div class="flex reverse-column-style">
+                                    <p class="text-style text-min-style myDIV help-cursor-style center-text-style">Saldo Anual</p>
+                                    <div class="hide">Saldo: subtração entre receitas e despesas</div>
+                                </div>
+
+                                <lightning-formatted-number 
+                                    class="currency-style" 
+                                    value={saldoAnual} 
+                                    maximum-fraction-digits="2" 
+                                    format-style="currency" 
+                                    currency-code="BRL">
+                                </lightning-formatted-number>
+                            </div>
+                            
                         </div>
                     </section>
                     
