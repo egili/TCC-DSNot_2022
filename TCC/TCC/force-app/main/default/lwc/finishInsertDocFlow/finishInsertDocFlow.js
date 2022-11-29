@@ -1,10 +1,10 @@
 import { LightningElement } from 'lwc';
 import { ShowToastEvent }  from 'lightning/platformShowToastEvent';
-import getId from '@salesforce/apex/DocumentacaoLWCController.getIdToDisplayAndOpenDocAfterFlowInsert';
+//import getId from '@salesforce/apex/DocumentacaoLWCController.getIdToDisplayAndOpenDocAfterFlowInsert';
 
 export default class FinishInsertDocFlow extends LightningElement {
 
-    idNewDoc;
+    /*idNewDoc;
 
     connectedCallback(){
         getId({})
@@ -14,7 +14,7 @@ export default class FinishInsertDocFlow extends LightningElement {
         .catch(error => {
             this.showErrorToast();
         })
-    }
+    }*/
 
     showToast(title, message, variant, mode) {
         const toast = new ShowToastEvent({
