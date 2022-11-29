@@ -24,6 +24,16 @@ public with sharing class ReceitasTriggerHandlerHelper {
         }
     }
     
+    public static void insertInPlanilhaOrcamentaria(List<Receitas__c> triggerNew){
+        Id idProj = triggerNew.get(0).ReceitasProjeto__c;
+        PlanilhaOrcamentaria__c po = [SELECT Id, PlanilhaOrcamentariaProjeto__c FROM PlanilhaOrcamentaria__c WHERE PlanilhaOrcamentariaProjeto__c =: idProj LIMIT 1];
+        for(Receitas__c r : triggerNew){
+            if(r.ReceitasProjeto__c != null){
+                r.ReceitaPlanilhaOrcamentaria__c = po.Id;
+            }
+        }
+    }
+    
     public static void preventAdditionWhenProjIsFinished(List<Receitas__c> triggerNew){
     	Set<Id> idSet = new Set<Id>();
 

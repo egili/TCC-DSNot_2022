@@ -24,6 +24,16 @@ public with sharing class DespesasTriggerHandlerHelper {
         }
     }
     
+    public static void insertInPlanilhaOrcamentaria(List<Despesas__c> triggerNew){
+        Id idProj = triggerNew.get(0).DespesasProjeto__c ;
+        PlanilhaOrcamentaria__c po = [SELECT Id, PlanilhaOrcamentariaProjeto__c FROM PlanilhaOrcamentaria__c WHERE PlanilhaOrcamentariaProjeto__c =: idProj LIMIT 1];
+        for(Despesas__c d : triggerNew){
+            if(d.DespesasProjeto__c != null){
+                d.DespesasPlanilhaOrcamentaria__c = po.Id;
+            }
+        }
+    }
+    
      public static void preventAdditionWhenProjIsFinished(List<Despesas__c> triggerNew){
     	Set<Id> idSet = new Set<Id>();
 

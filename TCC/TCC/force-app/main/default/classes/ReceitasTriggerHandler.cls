@@ -2,6 +2,7 @@ public with sharing class ReceitasTriggerHandler extends TriggerHandler {
 
     public override void beforeInsert(){
     	ReceitasTriggerHandlerHelper.insertInFluxoCaixa(Trigger.new);
+    	ReceitasTriggerHandlerHelper.insertInPlanilhaOrcamentaria(Trigger.new);
         ReceitasTriggerHandlerHelper.preventAdditionWhenProjIsFinished(Trigger.new);
     }
     
