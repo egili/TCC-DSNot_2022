@@ -1,6 +1,5 @@
 import { LightningElement, api } from 'lwc';
 import { ShowToastEvent }  from 'lightning/platformShowToastEvent';
-import ContactPhone from '@salesforce/schema/Case.ContactPhone';
 
 export default class DocumentacaoTop extends LightningElement {
 
